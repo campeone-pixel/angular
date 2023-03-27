@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   ]
 })
 export class SidebarComponent {
-
+  personas: string[] = ["Juan","Julian","Marcos","Florencia","Evelyn"];
+  estaCargando:Boolean = false
+  mensaje:number= 2
 }

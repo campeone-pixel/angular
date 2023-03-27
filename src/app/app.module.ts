@@ -7,8 +7,9 @@ import { ContenidoComponent } from './components/contenido/contenido.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { BloqueRedondeadoModule } from './directives/bloque-redondeado/bloque-redondeado.module';
 
 @NgModule({
   declarations: [
@@ -22,9 +23,10 @@ import {MatIconModule} from '@angular/material/icon';
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    BloqueRedondeadoModule
   ],
   providers: [],
-  bootstrap: [AppComponent,]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

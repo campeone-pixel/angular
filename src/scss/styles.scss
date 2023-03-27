@@ -2,6 +2,10 @@
   --toolbar-height: 64px;
   --sidebar-width: 230px;
 }
+*{
+  margin: 0;
+  padding: 0;
+}
 html,
 body {
   height: 100vh;
@@ -30,4 +34,12 @@ section {
 
 main {
   display: flex;
+}
+
+.table-success {
+  background-color: green;
+}
+
+.table-fail{
+  background-color: red;
 }

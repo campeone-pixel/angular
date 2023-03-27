@@ -1,4 +1,46 @@
-<section>
+<!-- <section>
+  <div
+    [ngClass]="estaCargando ? 'success' : 'error'"
+    [style.font-size]="estaCargando ? '50px':'30px'"
+  >
+    {{ estaCargando ? "ahora mismo esta cargando" : "no esta cargando" }}
+  </div>
+</section> -->
 
-    <div>contenido</div>
-</section>
+<p appBloqueRedondeado>
+  Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quis natus culpa
+  delectus placeat accusamus repellat, inventore odit accusantium laboriosam
+  ducimus ratione blanditiis hic exercitationem libero, iste at veniam eius
+  perspiciatis.
+</p>
+
+
+<div class="container-fluid">
+  <h1 class="mb-3">Tabla de usuarios</h1>
+  <table class="table table-stripped">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Nombre completo</th>
+        
+        <th>E-mail</th>
+        <th>Cumpleanios</th>
+
+     
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of usuarios" [ngClass]="user.mejorAlumno? 'table-success': 'table-fail'">
+        <td>{{user.id }}</td>
+        <td>{{user.nombre+" "+user.apellido | uppercase}}</td>
+        <td>{{user.mail | uppercase}}</td>
+      
+        <td>{{user.nacimiento | date}}</td>
+        
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
