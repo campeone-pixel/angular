@@ -30,17 +30,21 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of usuarios" [ngClass]="user.mejorAlumno? 'table-success': 'table-fail'">
-        <td>{{user.id }}</td>
-        <td>{{user.nombre+" "+user.apellido | uppercase}}</td>
-        <td>{{user.mail | uppercase}}</td>
+      <tr *ngFor="let alumno of listaAlumnos" [ngClass]="alumno.mejorAlumno? 'table-success': 'table-fail'">
+        <td>{{alumno.id }}</td>
+        <td>{{alumno.nombre+" "+alumno.apellido | uppercase}}</td>
+        <td>{{alumno.mail | uppercase}}</td>
+     
       
-        <td>{{user.nacimiento | date}}</td>
+       
+        <td><button class="btn btn-primary " (click)="abrirModal()">Abrir Modal</button></td>
+
         
       </tr>
     </tbody>
   </table>
 </div>
+<app-modal [(modalVisible)]="modalVisible" [(listaAlumnos)]="listaAlumnos"></app-modal>
 
 
 

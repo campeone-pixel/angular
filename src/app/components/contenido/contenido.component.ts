@@ -1,79 +1,80 @@
-import { Component } from '@angular/core';
-
+import { Component, Input, Output } from '@angular/core';
+import { Alumnos } from 'src/app/models';
 @Component({
   selector: 'app-contenido',
   templateUrl: './contenido.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class ContenidoComponent {
+  modalVisible: boolean = false;
 
-estaCargando = true
-usuarios: Array<{id: number, nombre: string,apellido: string, mail: string  ,mejorAlumno:boolean,nacimiento:Date}> = [
-  {
-    id:1,
-    nombre:'paula',
-    apellido:'paula',
-    mail:'paula@mail.com',
-    
-    mejorAlumno:true,
-    nacimiento:new Date('1985-01-03')
-  },
-  {
-    id:1,
-    nombre:'matias',
-    apellido:'poses',
-    mail:'poses@mail.com',
-    
-    mejorAlumno:false,
-    nacimiento:new Date('1991-01-03')
-  },
+  @Output()
+  modalVisibleChange?: boolean;
+
   
-  {
-    id:1,
-    nombre:'carlos',
-    apellido:'pero',
-    mail:'pero@mail.com',
-    
-    mejorAlumno:false,
-    nacimiento:new Date('1994-01-03')
-  },
-  {
-    id:1,
-    nombre:'miguel',
-    apellido:'miguel',
-    mail:'miguel@mail.com',
-    
-    mejorAlumno:true,
-    nacimiento:new Date('1980-01-03')
-  },
-  {
-    id:1,
-    nombre:'mirta',
-    apellido:'perez',
-    mail:'perez@mail.com',
-    
-    mejorAlumno:true,
-    nacimiento:new Date('1964-01-03')
-  },
-  {
-    id:1,
-    nombre:'gabriel',
-    apellido:'gabe',
-    mail:'gabe@mail.com',
-    
-    mejorAlumno:false,
-    nacimiento:new Date('2000-01-03')
-  },
-  {
-    id:1,
-    nombre:'lisan',
-    apellido:'lisna',
-    mail:'lisan@mail.com',
-    
-    mejorAlumno:true,
-    nacimiento:new Date('1994-01-03')
-  }
-];
 
+
+  listaAlumnos: Array<Alumnos> = [
+    new Alumnos(
+      1,
+      'paula',
+      'paula',
+      'paula@mail.com',
+
+      true
+    ),
+    new Alumnos(
+      2,
+      'matias',
+      'poses',
+      'poses@mail.com',
+
+      false
+    ),
+
+    new Alumnos(
+      3,
+      'carlos',
+      'pero',
+      'pero@mail.com',
+
+      false
+    ),
+    new Alumnos(
+      4,
+      'miguel',
+      'miguel',
+      'miguel@mail.com',
+
+      true
+    ),
+    new Alumnos(
+      5,
+      'mirta',
+      'perez',
+      'perez@mail.com',
+
+      true
+    ),
+    new Alumnos(
+      6,
+      'gabriel',
+      'gabe',
+      'gabe@mail.com',
+
+      false
+    ),
+    new Alumnos(
+      7,
+      'lisan',
+      'lisna',
+      'lisan@mail.com',
+
+      true
+    ),
+  ];
+
+  abrirModal(): void {
+    this.modalVisible = !this.modalVisible;
+  }
 }

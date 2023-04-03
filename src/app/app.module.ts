@@ -10,6 +10,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { BloqueRedondeadoModule } from './directives/bloque-redondeado/bloque-redondeado.module';
+import { ModalComponent } from './shared/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { BloqueRedondeadoModule } from './directives/bloque-redondeado/bloque-re
     ToolbarComponent,
     ContenidoComponent,
     SidebarComponent,
+    ModalComponent,
     
   ],
   imports: [
