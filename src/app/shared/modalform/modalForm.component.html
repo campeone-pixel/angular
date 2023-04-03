@@ -2,6 +2,7 @@
   <div class="bg-white">
     <div class="p-4">
       <form [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
         class="d-flex flex-column justify-content-center align-items-center"
       >
      
@@ -49,7 +50,7 @@
         </div>
 
         <div class=" row w-100 d-flex gap-4">
-          <button (click)="onClose()" type="submit" class="btn btn-primary col-sm-4">Submit</button>
+          <button  type="submit" class="btn btn-primary col-sm-4">Submit</button>
           <button (click)="onClose()"  class="btn btn-danger col-sm-4 ">Cancel</button>
         </div>
       </form>

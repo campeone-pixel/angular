@@ -71,6 +71,9 @@ export class ContenidoComponent {
     ),
   ];
 
+  @Output()
+  listaAlumnosChange?: Alumnos[];
+
   agregarAlumno(): void {
     this.modalVisible = !this.modalVisible;
   }
