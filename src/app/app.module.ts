@@ -10,7 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { BloqueRedondeadoModule } from './directives/bloque-redondeado/bloque-redondeado.module';
-import { ModalComponent } from './shared/modal/modal.component';
+import { ModalFormComponent } from './shared/modalform/modalForm.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,15 +19,15 @@ import { ModalComponent } from './shared/modal/modal.component';
     ToolbarComponent,
     ContenidoComponent,
     SidebarComponent,
-    ModalComponent,
-    
+    ModalFormComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    BloqueRedondeadoModule
+    BloqueRedondeadoModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

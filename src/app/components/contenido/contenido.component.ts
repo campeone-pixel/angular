@@ -11,9 +11,6 @@ export class ContenidoComponent {
   @Output()
   modalVisibleChange?: boolean;
 
-  
-
-
   listaAlumnos: Array<Alumnos> = [
     new Alumnos(
       1,
@@ -74,7 +71,7 @@ export class ContenidoComponent {
     ),
   ];
 
-  abrirModal(): void {
+  agregarAlumno(): void {
     this.modalVisible = !this.modalVisible;
   }
 }

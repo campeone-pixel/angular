@@ -37,14 +37,14 @@
      
       
        
-        <td><button class="btn btn-primary " (click)="abrirModal()">Abrir Modal</button></td>
 
         
       </tr>
     </tbody>
   </table>
 </div>
-<app-modal [(modalVisible)]="modalVisible" [(listaAlumnos)]="listaAlumnos"></app-modal>
+<button class="btn btn-primary " (click)="agregarAlumno()">Agregar Alumno</button>
+<app-modalForm [(modalVisible)]="modalVisible" ></app-modalForm>
 
 
 
