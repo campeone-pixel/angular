@@ -18,35 +18,33 @@ export class ModalFormComponent {
   modalVisible: boolean = false;
   @Output()
   modalVisibleChange = new EventEmitter<boolean>();
-
   @Input() listaAlumnos: Alumnos[] = [];
-
   @Output()
   listaAlumnosChange = new EventEmitter<Alumnos[]>();
 
   registerForm: FormGroup = new FormGroup({});
 
+  idControl = new FormControl('1', [Validators.required]);
+  nombreControl = new FormControl('nombre', [
+    Validators.required,
+    Validators.minLength(5),
+  ]);
+
+  apellidoControl = new FormControl('apellido', [
+    Validators.required,
+    Validators.minLength(5),
+  ]);
+  mailControl = new FormControl('mail@mail.com', [
+    Validators.required,
+    Validators.email,
+  ]);
+
   constructor(public formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
-      id: new FormControl('0', [
-        Validators.required,
-        Validators.min(1),
-        Validators.max(20),
-      ]),
-      nombre: new FormControl('nombre', [
-        Validators.required,
-        Validators.min(5),
-        Validators.max(20),
-      ]),
-      apellido: new FormControl('apellido', [
-        Validators.required,
-        Validators.min(5),
-        Validators.max(20),
-      ]),
-      email: new FormControl('mail@mail.com', [
-        Validators.email,
-        Validators.required,
-      ]),
+      id: this.idControl,
+      nombre: this.nombreControl,
+      apellido: this.apellidoControl,
+      mail: this.mailControl,
     });
   }
 
@@ -55,7 +53,12 @@ export class ModalFormComponent {
   }
 
   onSubmit(): void {
-    this.listaAlumnos.push(this.registerForm.value);
-    this.listaAlumnosChange.emit(this.listaAlumnos);
+    if (this.registerForm.valid) {
+      this.listaAlumnos.push(this.registerForm.value);
+      this.listaAlumnosChange.emit(this.listaAlumnos);
+      this.modalVisibleChange.emit(!this.modalVisible);
+    } else {
+      alert('no es valido');
+    }
   }
 }

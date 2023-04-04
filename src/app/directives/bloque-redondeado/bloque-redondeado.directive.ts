@@ -5,7 +5,7 @@ import { Directive, ElementRef, Renderer2 } from '@angular/core';
 })
 export class BloqueRedondeadoDirective {
   constructor(public elementRef: ElementRef, public renderer2: Renderer2) {
-    console.log(elementRef);
+    
     const elementHtml = elementRef.nativeElement;
 
     renderer2.setStyle(elementHtml,'border-radius', '100px')

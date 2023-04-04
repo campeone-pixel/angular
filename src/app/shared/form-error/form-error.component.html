@@ -1,0 +1,13 @@
+
+
+<div *ngFor="let item of typeError | keyvalue">
+  <ng-container [ngSwitch]="item.key">
+   
+    <p *ngSwitchCase="'required'" class="text-danger">Este campo es requerido</p>
+
+    <p *ngSwitchCase="'minlength'" class="text-danger">debe tener {{ item.value['requiredLength'] }} caracteres como minimo</p>
+   
+
+    
+  </ng-container>
+</div>

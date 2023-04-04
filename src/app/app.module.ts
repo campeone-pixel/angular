@@ -13,6 +13,8 @@ import { BloqueRedondeadoModule } from './directives/bloque-redondeado/bloque-re
 import { ModalFormComponent } from './shared/modalform/modalForm.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { FormErrorComponent } from './shared/form-error/form-error.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ContenidoComponent,
     SidebarComponent,
     ModalFormComponent,
+
+    FormErrorComponent,
   ],
   imports: [
     BrowserModule,
