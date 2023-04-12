@@ -17,6 +17,7 @@ import { BloqueRedondeadoModule } from '../../directives/bloque-redondeado/bloqu
 import { SidenavTogglerService } from '../../services/sidenav-toggler.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {SharedModule} from "../../shared/shared.module"
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [ContenidoComponent, SidebarComponent, ToolbarComponent],
@@ -30,6 +31,7 @@ import {SharedModule} from "../../shared/shared.module"
     ReactiveFormsModule,
     MatButtonModule,
     MatSidenavModule,
+    MatTableModule,
     
   ],
   exports: [ContenidoComponent, SidebarComponent, ToolbarComponent],

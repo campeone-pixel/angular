@@ -24,7 +24,6 @@ export class ModalFormComponent {
 
   registerForm: FormGroup = new FormGroup({});
 
-  idControl = new FormControl('1', [Validators.required]);
   nombreControl = new FormControl('nombre', [
     Validators.required,
     Validators.minLength(5),
@@ -41,7 +40,6 @@ export class ModalFormComponent {
 
   constructor(public formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
-      id: this.idControl,
       nombre: this.nombreControl,
       apellido: this.apellidoControl,
       mail: this.mailControl,
@@ -54,7 +52,11 @@ export class ModalFormComponent {
 
   onSubmit(): void {
     if (this.registerForm.valid) {
-      this.listaAlumnos.push(this.registerForm.value);
+      this.listaAlumnos.push({
+        ...this.registerForm.value,
+        id: this.listaAlumnos[this.listaAlumnos.length - 1].id + 1,
+        eliminado: false,
+      });
       this.listaAlumnosChange.emit(this.listaAlumnos);
       this.modalVisibleChange.emit(!this.modalVisible);
     } else {

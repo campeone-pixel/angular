@@ -1,5 +1,12 @@
 import { Component, Input, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Alumnos } from 'src/app/models';
+
+import { EditarComponent } from 'src/app/shared/dialogs/mis_dialogs/editar/editar.component';
+import { EliminarComponent } from 'src/app/shared/dialogs/mis_dialogs/eliminar/eliminar.component';
+import { ModalFormComponent } from 'src/app/shared/modalform/modalForm.component';
+
+
 
 @Component({
   selector: 'app-contenido',
@@ -8,6 +15,8 @@ import { Alumnos } from 'src/app/models';
 })
 export class ContenidoComponent {
   modalVisible: boolean = false;
+
+  constructor(private dialogService: MatDialog) {}
 
   @Output()
   modalVisibleChange?: boolean;
@@ -19,7 +28,8 @@ export class ContenidoComponent {
       'paula',
       'paula@mail.com',
 
-      true
+      true,
+      false
     ),
     new Alumnos(
       2,
@@ -27,6 +37,8 @@ export class ContenidoComponent {
       'poses',
       'poses@mail.com',
 
+      false
+      ,
       false
     ),
 
@@ -36,6 +48,7 @@ export class ContenidoComponent {
       'pero',
       'pero@mail.com',
 
+      false,
       false
     ),
     new Alumnos(
@@ -44,7 +57,8 @@ export class ContenidoComponent {
       'miguel',
       'miguel@mail.com',
 
-      true
+      true,
+      false
     ),
     new Alumnos(
       5,
@@ -52,7 +66,8 @@ export class ContenidoComponent {
       'perez',
       'perez@mail.com',
 
-      true
+      true,
+      false
     ),
     new Alumnos(
       6,
@@ -60,6 +75,7 @@ export class ContenidoComponent {
       'gabe',
       'gabe@mail.com',
 
+      false,
       false
     ),
     new Alumnos(
@@ -68,7 +84,8 @@ export class ContenidoComponent {
       'lisna',
       'lisan@mail.com',
 
-      true
+      true,
+      false
     ),
   ];
 
@@ -78,4 +95,28 @@ export class ContenidoComponent {
   agregarAlumno(): void {
     this.modalVisible = !this.modalVisible;
   }
+
+  editarAlumno(alumno:Alumnos): void {
+    
+    const dialog = this.dialogService.open(EditarComponent, { data: alumno }); 
+    
+    dialog.afterClosed().subscribe(
+     data => {const index = this.listaAlumnos.findIndex(alumno=>alumno.id === data.id)
+    this.listaAlumnos[index]=data
+    }
+    )
+
+  }
+
+  eliminarAlumno(alumno:Alumnos): void {
+    
+    const dialog = this.dialogService.open(EliminarComponent, { data: alumno });
+    dialog.afterClosed().subscribe(
+      data => {const index = this.listaAlumnos.findIndex(alumno=>alumno.id === data.id)
+      this.listaAlumnos[index]={...data,eliminado:true}
+     }
+  )
+
+}
+
 }

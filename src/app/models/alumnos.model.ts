@@ -5,6 +5,7 @@ export class Alumnos {
     public apellido: string,
     public mail:string,
     public mejorAlumno: boolean,
+    public eliminado: boolean,
 
   
   ) {}

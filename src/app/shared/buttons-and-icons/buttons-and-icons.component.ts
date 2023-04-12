@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-buttons-and-icons',
@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   ]
 })
 export class ButtonsAndIconsComponent {
+@Input()
+id:number=0;
+
+
 
 }
