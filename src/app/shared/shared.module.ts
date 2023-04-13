@@ -14,15 +14,17 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { EliminarComponent } from './dialogs/mis_dialogs/eliminar/eliminar.component';
 import { EditarComponent } from './dialogs/mis_dialogs/editar/editar.component';
+import { TablesComponent } from './tables/tables.components';
 @NgModule({
   declarations: [
     FormErrorComponent,
     ModalFormComponent,
     CardsComponent,
     ButtonsAndIconsComponent,
-    
+
     EliminarComponent,
     EditarComponent,
+    TablesComponent,
   ],
   imports: [
     CommonModule,
@@ -33,14 +35,14 @@ import { EditarComponent } from './dialogs/mis_dialogs/editar/editar.component';
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
-    MatIconModule
+    MatIconModule,
   ],
   exports: [
     FormErrorComponent,
     ModalFormComponent,
     CardsComponent,
     ButtonsAndIconsComponent,
-    
+    TablesComponent,
   ],
 })
 export class SharedModule {}
