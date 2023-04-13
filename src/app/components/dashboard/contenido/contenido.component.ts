@@ -1,12 +1,9 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Alumnos } from 'src/app/models';
 
 import { EditarComponent } from 'src/app/shared/dialogs/mis_dialogs/editar/editar.component';
 import { EliminarComponent } from 'src/app/shared/dialogs/mis_dialogs/eliminar/eliminar.component';
-import { ModalFormComponent } from 'src/app/shared/modalform/modalForm.component';
-
-
 
 @Component({
   selector: 'app-contenido',
@@ -37,8 +34,7 @@ export class ContenidoComponent {
       'poses',
       'poses@mail.com',
 
-      false
-      ,
+      false,
       false
     ),
 
@@ -96,27 +92,24 @@ export class ContenidoComponent {
     this.modalVisible = !this.modalVisible;
   }
 
-  editarAlumno(alumno:Alumnos): void {
-    
-    const dialog = this.dialogService.open(EditarComponent, { data: alumno }); 
-    
-    dialog.afterClosed().subscribe(
-     data => {const index = this.listaAlumnos.findIndex(alumno=>alumno.id === data.id)
-    this.listaAlumnos[index]=data
-    }
-    )
+  editarAlumno(alumno: Alumnos): void {
+    const dialog = this.dialogService.open(EditarComponent, { data: alumno });
 
+    dialog.afterClosed().subscribe((data) => {
+      const index = this.listaAlumnos.findIndex(
+        (alumno) => alumno.id === data.id
+      );
+      this.listaAlumnos[index] = data;
+    });
   }
 
-  eliminarAlumno(alumno:Alumnos): void {
-    
+  eliminarAlumno(alumno: Alumnos): void {
     const dialog = this.dialogService.open(EliminarComponent, { data: alumno });
-    dialog.afterClosed().subscribe(
-      data => {const index = this.listaAlumnos.findIndex(alumno=>alumno.id === data.id)
-      this.listaAlumnos[index]={...data,eliminado:true}
-     }
-  )
-
-}
-
+    dialog.afterClosed().subscribe((data) => {
+      const index = this.listaAlumnos.findIndex(
+        (alumno) => alumno.id === data.id
+      );
+      this.listaAlumnos[index] = { ...data, eliminado: true };
+    });
+  }
 }
