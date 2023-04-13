@@ -15,6 +15,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { EliminarComponent } from './dialogs/mis_dialogs/eliminar/eliminar.component';
 import { EditarComponent } from './dialogs/mis_dialogs/editar/editar.component';
 import { TablesComponent } from './tables/tables.components';
+import { MatTableModule } from '@angular/material/table';
 @NgModule({
   declarations: [
     FormErrorComponent,
@@ -36,6 +37,7 @@ import { TablesComponent } from './tables/tables.components';
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
+    MatTableModule,
   ],
   exports: [
     FormErrorComponent,

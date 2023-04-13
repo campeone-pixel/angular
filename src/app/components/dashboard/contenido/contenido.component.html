@@ -7,40 +7,9 @@
   </div>
 </section> -->
 
-<div class="container-fluid">
-  <h1 class="mb-3">Tabla de usuarios</h1>
-  <table class="table table-stripped">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Nombre completo</th>
 
-        <th>E-mail</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr
-        *ngFor="let alumno of listaAlumnos"
-        [ngClass]="alumno.mejorAlumno ? 'table-success' : 'table-fail'"
-      >
-        <td *ngIf="(alumno.eliminado == false)">{{ alumno.id }}</td>
-        <td *ngIf="(alumno.eliminado == false)">{{ alumno.nombre + " " + alumno.apellido | uppercase }}</td>
-        <td *ngIf="(alumno.eliminado == false)">{{ alumno.mail | uppercase }}</td>
-        <td *ngIf="(alumno.eliminado == false)">
-         <button mat-button (click)="editarAlumno(alumno)">
-            <mat-icon color="accent"> edit </mat-icon>
-          </button>
-          <button mat-button (click)="eliminarAlumno(alumno)">
-            <mat-icon color="accent"> delete_outline </mat-icon>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 
-<app-tables [listaAlumnos ]="listaAlumnos"></app-tables>
+<app-tables   [(listaAlumnos)]="listaAlumnos"></app-tables> 
 
 
 <button class="btn btn-primary" (click)="agregarAlumno()">

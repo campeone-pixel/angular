@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Alumnos } from 'src/app/models';
 
