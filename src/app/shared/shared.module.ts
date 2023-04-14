@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormErrorComponent } from './form-error/form-error.component';
-import { ModalFormComponent } from './modalform/modalForm.component';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardsComponent } from './cards/cards.component';
 import { MatCardModule } from '@angular/material/card';
@@ -16,16 +16,19 @@ import { EliminarComponent } from './dialogs/mis_dialogs/eliminar/eliminar.compo
 import { EditarComponent } from './dialogs/mis_dialogs/editar/editar.component';
 import { TablesComponent } from './tables/tables.components';
 import { MatTableModule } from '@angular/material/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { AgregarComponent } from './dialogs/mis_dialogs/agregar/agregar.component';
 @NgModule({
   declarations: [
     FormErrorComponent,
-    ModalFormComponent,
+  
     CardsComponent,
     ButtonsAndIconsComponent,
 
     EliminarComponent,
     EditarComponent,
     TablesComponent,
+    AgregarComponent,
   ],
   imports: [
     CommonModule,
@@ -38,13 +41,15 @@ import { MatTableModule } from '@angular/material/table';
     MatFormFieldModule,
     MatIconModule,
     MatTableModule,
+    MatCheckboxModule
   ],
   exports: [
     FormErrorComponent,
-    ModalFormComponent,
+   
     CardsComponent,
     ButtonsAndIconsComponent,
     TablesComponent,
+    
   ],
 })
 export class SharedModule {}

@@ -9,17 +9,16 @@ import {
 } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Alumnos } from 'src/app/models/alumnos.model';
-
 @Component({
-  selector: 'app-editar',
-  templateUrl: './editar.component.html',
+  selector: 'app-agregar',
+  templateUrl: './agregar.component.html',
   styles: [
   ]
 })
-export class EditarComponent {
+export class AgregarComponent {
+
 
   registerForm: FormGroup = new FormGroup({});
-
 
   nombreControl = new FormControl('nombre', [
     Validators.required,
@@ -35,21 +34,14 @@ export class EditarComponent {
     Validators.email,
   ]);
 
- mejorAlumnoControl = new FormControl(false);
- 
-  constructor(public formBuilder: FormBuilder,@Inject(MAT_DIALOG_DATA) public data: Alumnos) {
+  mejorAlumnoControl = new FormControl(false);
+
+  constructor(public formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
-      id: this.data.id,
-      nombre: this.data.nombre,
-      apellido: this.data.apellido,
-      mail: this.data.mail,
-      mejorAlumno:this.data.mejorAlumno,
-      eliminado:this.data.eliminado
+      nombre: this.nombreControl,
+      apellido: this.apellidoControl,
+      mail: this.mailControl,
+      mejorAlumno:this.mejorAlumnoControl
     });
-    
   }
-
-
-
-
 }

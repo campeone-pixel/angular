@@ -1,4 +1,4 @@
-import { Component, Output } from '@angular/core';
+import { Component, OnInit, Output,OnChanges,SimpleChanges, } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Alumnos } from 'src/app/models';
 
@@ -10,13 +10,11 @@ import { EliminarComponent } from 'src/app/shared/dialogs/mis_dialogs/eliminar/e
   templateUrl: './contenido.component.html',
   styles: [],
 })
-export class ContenidoComponent {
-  modalVisible: boolean = false;
+export class ContenidoComponent  {
 
-  constructor(private dialogService: MatDialog) {}
 
-  @Output()
-  modalVisibleChange?: boolean;
+  constructor() {}
+
 
   listaAlumnos: Array<Alumnos> = [
     new Alumnos(
@@ -85,31 +83,12 @@ export class ContenidoComponent {
     ),
   ];
 
+ 
+
   @Output()
   listaAlumnosChange?: Alumnos[];
 
-  agregarAlumno(): void {
-    this.modalVisible = !this.modalVisible;
-  }
 
-  editarAlumno(alumno: Alumnos): void {
-    const dialog = this.dialogService.open(EditarComponent, { data: alumno });
 
-    dialog.afterClosed().subscribe((data) => {
-      const index = this.listaAlumnos.findIndex(
-        (alumno) => alumno.id === data.id
-      );
-      this.listaAlumnos[index] = data;
-    });
-  }
 
-  eliminarAlumno(alumno: Alumnos): void {
-    const dialog = this.dialogService.open(EliminarComponent, { data: alumno });
-    dialog.afterClosed().subscribe((data) => {
-      const index = this.listaAlumnos.findIndex(
-        (alumno) => alumno.id === data.id
-      );
-      this.listaAlumnos[index] = { ...data, eliminado: true };
-    });
-  }
 }
