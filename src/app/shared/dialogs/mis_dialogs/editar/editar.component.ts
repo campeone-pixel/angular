@@ -1,5 +1,4 @@
-
-import { Component, EventEmitter, Input, Output,Inject } from '@angular/core';
+import { Component, EventEmitter, Input, Output, Inject } from '@angular/core';
 import {
   FormBuilder,
   FormArray,
@@ -7,19 +6,20 @@ import {
   FormGroup,
   FormControl,
 } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { Alumnos } from 'src/app/models/alumnos.model';
 
 @Component({
   selector: 'app-editar',
   templateUrl: './editar.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class EditarComponent {
-
   registerForm: FormGroup = new FormGroup({});
-
 
   nombreControl = new FormControl('nombre', [
     Validators.required,
@@ -35,21 +35,25 @@ export class EditarComponent {
     Validators.email,
   ]);
 
- mejorAlumnoControl = new FormControl(false);
- 
-  constructor(public formBuilder: FormBuilder,@Inject(MAT_DIALOG_DATA) public data: Alumnos) {
+  mejorAlumnoControl = new FormControl(false);
+
+  constructor(
+    public formBuilder: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data: Alumnos,
+    public dialogRef: MatDialogRef<EditarComponent>
+  ) {
     this.registerForm = this.formBuilder.group({
       id: this.data.id,
       nombre: this.data.nombre,
       apellido: this.data.apellido,
       mail: this.data.mail,
-      mejorAlumno:this.data.mejorAlumno,
-      eliminado:this.data.eliminado
+      mejorAlumno: this.data.mejorAlumno,
+      eliminado: this.data.eliminado,
     });
-    
   }
 
-
-
-
+  onNoClick(): void {
+    
+    this.dialogRef.close();
+  }
 }

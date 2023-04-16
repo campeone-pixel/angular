@@ -10,10 +10,13 @@ import { EliminarComponent } from 'src/app/shared/dialogs/mis_dialogs/eliminar/e
   templateUrl: './contenido.component.html',
   styles: [],
 })
-export class ContenidoComponent  {
+export class ContenidoComponent implements OnChanges  {
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
+  }
 
 
-  constructor() {}
+
 
 
   listaAlumnos: Array<Alumnos> = [
@@ -82,8 +85,6 @@ export class ContenidoComponent  {
       false
     ),
   ];
-
- 
 
   @Output()
   listaAlumnosChange?: Alumnos[];
