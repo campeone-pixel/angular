@@ -31,7 +31,7 @@ export class TablesComponent implements OnInit {
 
   constructor(private dialogService: MatDialog) {}
 
-  displayedColumns: string[] = ['id', 'nombre', 'apellido', 'mail', 'action'];
+  displayedColumns: string[] = ['id', 'nombre',  'mail', 'action'];
 
   editarAlumno(alumno: Alumnos): void {
     const dialog = this.dialogService.open(EditarComponent, { data: alumno });

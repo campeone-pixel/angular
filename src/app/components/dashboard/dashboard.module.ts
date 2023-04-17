@@ -18,6 +18,9 @@ import { SidenavTogglerService } from '../../services/sidenav-toggler.service';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {SharedModule} from "../../shared/shared.module"
 import {MatTableModule} from '@angular/material/table';
+import { FontSizeModule } from 'src/app/directives/font-size/font-size.module';
+import { ProfesoresModule } from '../../profesores/profesores.module';
+import { AlumnosModule } from '../../alumnos/alumnos.module';
 
 @NgModule({
   declarations: [ContenidoComponent, SidebarComponent, ToolbarComponent],
@@ -32,6 +35,9 @@ import {MatTableModule} from '@angular/material/table';
     MatButtonModule,
     MatSidenavModule,
     MatTableModule,
+    FontSizeModule,
+    ProfesoresModule,
+    AlumnosModule
     
   ],
   exports: [ContenidoComponent, SidebarComponent, ToolbarComponent],

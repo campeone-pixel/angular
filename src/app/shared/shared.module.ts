@@ -18,38 +18,36 @@ import { TablesComponent } from './tables/tables.components';
 import { MatTableModule } from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AgregarComponent } from './dialogs/mis_dialogs/agregar/agregar.component';
+import { PipesModule } from "../pipes/pipes.module";
 @NgModule({
-  declarations: [
-    FormErrorComponent,
-  
-    CardsComponent,
-    ButtonsAndIconsComponent,
-
-    EliminarComponent,
-    EditarComponent,
-    TablesComponent,
-    AgregarComponent,
-  ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    MatCardModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDialogModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatTableModule,
-    MatCheckboxModule
-  ],
-  exports: [
-    FormErrorComponent,
-   
-    CardsComponent,
-    ButtonsAndIconsComponent,
-    TablesComponent,
-    
-  ],
+    declarations: [
+        FormErrorComponent,
+        CardsComponent,
+        ButtonsAndIconsComponent,
+        EliminarComponent,
+        EditarComponent,
+        TablesComponent,
+        AgregarComponent,
+    ],
+    exports: [
+        FormErrorComponent,
+        CardsComponent,
+        ButtonsAndIconsComponent,
+        TablesComponent,
+    ],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatCardModule,
+        MatButtonModule,
+        MatIconModule,
+        MatDialogModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatIconModule,
+        MatTableModule,
+        MatCheckboxModule,
+        PipesModule
+    ]
 })
 export class SharedModule {}
