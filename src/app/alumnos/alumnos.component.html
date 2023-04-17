@@ -1,1 +1,11 @@
-<p>alumnos works!</p>
+
+<div *ngIf="cargando"><div>
+  
+  <ng-template #notCargando>
+    
+
+  <pre>
+      {{listaAlumnos|json}}
+  </pre>
+  </ng-template>
+

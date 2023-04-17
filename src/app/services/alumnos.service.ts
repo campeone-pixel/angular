@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Alumnos } from '../models/alumnos.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AlumnosService {
-
-  
-  constructor() { }
+  constructor() {}
 
   listaAlumnos: Array<Alumnos> = [
     new Alumnos(
@@ -76,13 +75,18 @@ export class AlumnosService {
     ),
   ];
 
-  getAlumnos(){
-    return this.listaAlumnos
+  getAlumnos(): Observable<Alumnos[]> {
+    return new Observable<Alumnos[]>((observer) => {
+      setTimeout(() => {
+        observer.next(this.listaAlumnos);
+      }, 2000);
+      observer.complete();
+    });
   }
 
-  getAlumnoByID(id:number){
-    return this.listaAlumnos.filter((alumno)=>{
-      return alumno.id === id
-    })
+  getAlumnoByID(id: number) {
+    return this.listaAlumnos.filter((alumno) => {
+      return alumno.id === id;
+    });
   }
 }
