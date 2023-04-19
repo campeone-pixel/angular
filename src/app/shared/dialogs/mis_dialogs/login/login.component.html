@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Iniciar sesión</h2>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <mat-dialog-content>
+    
+    <mat-form-field>
+      <input matInput formControlName="mail" placeholder="Correo electrónico">
+      
+    </mat-form-field>
+    
+    <mat-form-field>
+      <input matInput type="text" formControlName="nombre" placeholder="nombre">
+    
+    </mat-form-field>
+    
+    <mat-form-field>
+      <input matInput type="text" formControlName="apellido" placeholder="apellido">
+
+    </mat-form-field>
+    
+
+    
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button color="primary"  [mat-dialog-close]="loginForm" type="submit" [disabled]="loginForm.invalid">Iniciar sesión</button>
+    <button mat-button color="warm"  type="button" >Cancelar</button>
+  </mat-dialog-actions>
+</form>
