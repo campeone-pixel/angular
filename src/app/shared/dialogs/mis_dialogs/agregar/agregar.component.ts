@@ -8,7 +8,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Alumnos } from 'src/app/models/alumnos.model';
+import { Alumnos } from 'src/app/core/models/alumnos.model';
 @Component({
   selector: 'app-agregar',
   templateUrl: './agregar.component.html',

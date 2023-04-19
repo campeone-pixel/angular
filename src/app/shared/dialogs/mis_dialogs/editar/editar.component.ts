@@ -11,7 +11,7 @@ import {
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
-import { Alumnos } from 'src/app/models/alumnos.model';
+import { Alumnos } from 'src/app/core/models/alumnos.model';
 
 @Component({
   selector: 'app-editar',

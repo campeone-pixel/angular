@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Alumnos } from '../models/alumnos.model';
 
 @Injectable({
@@ -77,16 +77,34 @@ export class AlumnosService {
 
   getAlumnos(): Observable<Alumnos[]> {
     return new Observable<Alumnos[]>((observer) => {
-      setTimeout(() => {
+      
         observer.next(this.listaAlumnos);
-      }, 2000);
-      observer.complete();
+        observer.complete()
+      
     });
+    
   }
 
   getAlumnoByID(id: number) {
     return this.listaAlumnos.filter((alumno) => {
       return alumno.id === id;
     });
+  }
+
+  add(alumno: any): Observable<any[]> {
+    this.listaAlumnos.push(alumno);
+    return of(this.listaAlumnos);
+  }
+
+  // Método para eliminar un alumno por su índice y emitir la lista actualizada como un Observable
+  delete(index: number): Observable<any[]> {
+    this.listaAlumnos.splice(index, 1);
+    return of(this.listaAlumnos);
+  }
+
+  // Método para actualizar la información de un alumno y emitir la lista actualizada como un Observable
+  update(index: number, updatedAlumno: any): Observable<any[]> {
+    this.listaAlumnos[index] = updatedAlumno;
+    return of(this.listaAlumnos);
   }
 }

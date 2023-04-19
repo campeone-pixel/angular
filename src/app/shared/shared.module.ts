@@ -19,6 +19,7 @@ import { MatTableModule } from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { AgregarComponent } from './dialogs/mis_dialogs/agregar/agregar.component';
 import { PipesModule } from "../pipes/pipes.module";
+import { PatronIteradorComponent } from './patron-iterador/patron-iterador.component';
 @NgModule({
     declarations: [
         FormErrorComponent,
@@ -28,12 +29,14 @@ import { PipesModule } from "../pipes/pipes.module";
         EditarComponent,
         TablesComponent,
         AgregarComponent,
+        PatronIteradorComponent,
     ],
     exports: [
         FormErrorComponent,
         CardsComponent,
         ButtonsAndIconsComponent,
         TablesComponent,
+        PatronIteradorComponent
     ],
     imports: [
         CommonModule,

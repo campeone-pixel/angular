@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { SidenavTogglerService } from '../../../services/sidenav-toggler.service';
+import { SidenavTogglerService } from 'src/app/core/services/sidenav-toggler.service';
+
 import { enviroments } from 'src/enviroments/enviroments.prod';
 
 @Component({

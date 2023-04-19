@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { SidenavTogglerService } from '../../../services/sidenav-toggler.service';
+import { SidenavTogglerService } from 'src/app/core/services/sidenav-toggler.service';
+
 
 @Component({
   selector: 'app-sidebar',

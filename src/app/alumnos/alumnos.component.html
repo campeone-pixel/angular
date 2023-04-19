@@ -1,11 +1,8 @@
+<div *ngIf="cargando; else notCargando">Cargando ...</div>
 
-<div *ngIf="cargando"><div>
-  
-  <ng-template #notCargando>
-    
-
+<ng-template #notCargando>
   <pre>
-      {{listaAlumnos|json}}
-  </pre>
-  </ng-template>
-
+    {{ listaAlumnos | json }}
+      </pre
+  >
+</ng-template>

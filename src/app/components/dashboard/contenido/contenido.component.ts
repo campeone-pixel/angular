@@ -1,9 +1,11 @@
 import { Component, OnInit, Output,OnChanges,SimpleChanges, } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { Alumnos } from 'src/app/models';
 
-import { EditarComponent } from 'src/app/shared/dialogs/mis_dialogs/editar/editar.component';
-import { EliminarComponent } from 'src/app/shared/dialogs/mis_dialogs/eliminar/eliminar.component';
+import { Alumnos } from 'src/app/core/models';
+import { AuthService } from '../../../core/services/auth.service';
+import { AlumnosService } from 'src/app/core/services/alumnos.service';
+import { Observable } from 'rxjs';
+
+
 
 @Component({
   selector: 'app-contenido',
@@ -12,82 +14,18 @@ import { EliminarComponent } from 'src/app/shared/dialogs/mis_dialogs/eliminar/e
 })
 export class ContenidoComponent implements OnChanges  {
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes)
+    
+  }
+  listaAlumnos: Observable<Alumnos[]>;
+  constructor(private authService:AuthService,private alumnosService: AlumnosService){
+    this.listaAlumnos = alumnosService.getAlumnos();
   }
 
 
 
 
 
-  listaAlumnos: Array<Alumnos> = [
-    new Alumnos(
-      1,
-      'paula',
-      'paula',
-      'paula@mail.com',
 
-      true,
-      false
-    ),
-    new Alumnos(
-      2,
-      'matias',
-      'poses',
-      'poses@mail.com',
-
-      false,
-      false
-    ),
-
-    new Alumnos(
-      3,
-      'carlos',
-      'pero',
-      'pero@mail.com',
-
-      false,
-      false
-    ),
-    new Alumnos(
-      4,
-      'miguel',
-      'miguel',
-      'miguel@mail.com',
-
-      true,
-      false
-    ),
-    new Alumnos(
-      5,
-      'mirta',
-      'perez',
-      'perez@mail.com',
-
-      true,
-      false
-    ),
-    new Alumnos(
-      6,
-      'gabriel',
-      'gabe',
-      'gabe@mail.com',
-
-      false,
-      false
-    ),
-    new Alumnos(
-      7,
-      'lisan',
-      'lisna',
-      'lisan@mail.com',
-
-      true,
-      false
-    ),
-  ];
-
-  @Output()
-  listaAlumnosChange?: Alumnos[];
 
 
 

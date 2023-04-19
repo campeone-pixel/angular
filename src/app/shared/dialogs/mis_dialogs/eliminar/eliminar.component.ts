@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { Alumnos } from 'src/app/models';
+import { Alumnos } from 'src/app/core/models';
 
 @Component({
   selector: 'app-eliminar',

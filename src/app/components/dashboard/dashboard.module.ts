@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ContenidoComponent } from './contenido/contenido.component';
 
-import { ToolbarComponent } from './toolbar/toolbar.component';
+
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -14,13 +13,17 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatButtonModule } from '@angular/material/button';
 import { BloqueRedondeadoModule } from '../../directives/bloque-redondeado/bloque-redondeado.module';
-import { SidenavTogglerService } from '../../services/sidenav-toggler.service';
-import { SidebarComponent } from './sidebar/sidebar.component';
+
+
 import {SharedModule} from "../../shared/shared.module"
 import {MatTableModule} from '@angular/material/table';
 import { FontSizeModule } from 'src/app/directives/font-size/font-size.module';
 import { ProfesoresModule } from '../../profesores/profesores.module';
 import { AlumnosModule } from '../../alumnos/alumnos.module';
+import { ContenidoComponent } from './contenido/contenido.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidenavTogglerService } from 'src/app/core/services/sidenav-toggler.service';
 
 @NgModule({
   declarations: [ContenidoComponent, SidebarComponent, ToolbarComponent],

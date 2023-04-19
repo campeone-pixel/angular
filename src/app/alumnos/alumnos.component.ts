@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AlumnosService } from '../services/alumnos.service';
-import { Alumnos } from '../models';
+import { AlumnosService } from '../core/services/alumnos.service';
+import { Alumnos } from 'src/app/core/models';
 
 @Component({
   selector: 'app-alumnos',
@@ -13,8 +13,18 @@ export class AlumnosComponent implements OnInit {
 
   constructor(private alumnoService: AlumnosService) {}
   ngOnInit(): void {
-    this.alumnoService.getAlumnos().subscribe((alumnos) => {
-      this.listaAlumnos = alumnos;
-    });
+   this.cargarAlumnos()
   }
-}
+
+  cargarAlumnos(){
+    this.cargando = true
+    this.alumnoService.getAlumnos().subscribe({next:(alumnos) => {
+      this.listaAlumnos = alumnos},
+      error:(error)=>{alert(error)},
+      complete:()=>{this.cargando = false}
+    })}
+
+
+
+  }
+
