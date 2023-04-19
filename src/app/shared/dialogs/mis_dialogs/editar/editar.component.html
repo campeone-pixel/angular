@@ -1,14 +1,15 @@
 <form [formGroup]="registerForm">
   <mat-form-field class="mb-3 w-100">
-    <mat-label for="exampleInputPassword1" class="form-label">Nombre</mat-label>
+    <mat-label class="form-label">Nombre</mat-label>
     <input
       matInput
       formControlName="nombre"
       type="text"
-      id="exampleInputPassword1"
       [class.is-invalid]="nombreControl.invalid && nombreControl.touched"
     />
-    <app-form-error [typeError]="nombreControl.errors"></app-form-error>
+    <mat-error *ngFor="let error of nombreControl.errors | keyvalue">
+      {{ error | controlErrorsMessage }}
+     </mat-error>
   </mat-form-field>
 
   <mat-form-field class="mb-3 w-100">
@@ -19,10 +20,11 @@
       matInput
       formControlName="apellido"
       type="text"
-      id="exampleInputPassword1"
       [class.is-invalid]="apellidoControl.invalid && apellidoControl.touched"
     />
-    <app-form-error [typeError]="apellidoControl.errors"></app-form-error>
+    <mat-error *ngFor="let error of apellidoControl.errors | keyvalue">
+      {{ error | controlErrorsMessage }}
+     </mat-error>
   </mat-form-field>
 
   <mat-form-field class="mb-3 w-100">
@@ -33,19 +35,18 @@
       matInput
       formControlName="mail"
       type="email"
-      id="exampleInputEmail1"
       aria-describedby="emailHelp"
       [class.is-invalid]="mailControl.invalid && mailControl.touched"
     />
-    <app-form-error [typeError]="mailControl.errors"></app-form-error>
+    <mat-error *ngFor="let error of mailControl.errors | keyvalue">
+      {{ error | controlErrorsMessage }}
+     </mat-error>
   </mat-form-field>
 
-  <mat-checkbox formControlName="mejorAlumno"
-    >Mejor Alumno</mat-checkbox
-  >
+  <mat-checkbox formControlName="mejorAlumno">Mejor Alumno</mat-checkbox>
 
   <div mat-dialog-action class="row w-100 d-flex gap-4">
     <button mat-button [mat-dialog-close]="registerForm">Submit</button>
-    <button type="button" mat-button mat-dialog-close >Cancel</button>
+    <button type="button" mat-button mat-dialog-close>Cancel</button>
   </div>
 </form>

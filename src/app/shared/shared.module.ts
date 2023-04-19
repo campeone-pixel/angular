@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormErrorComponent } from './form-error/form-error.component';
+
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { CardsComponent } from './cards/cards.component';
@@ -21,9 +21,13 @@ import { AgregarComponent } from './dialogs/mis_dialogs/agregar/agregar.componen
 import { PipesModule } from '../pipes/pipes.module';
 import { PatronIteradorComponent } from './patron-iterador/patron-iterador.component';
 import { LoginComponent } from './dialogs/mis_dialogs/login/login.component';
+import { SidenavTogglerService } from '../core/services/sidenav-toggler.service';
+import { AuthService } from '../core/services/auth.service';
+import { NotificationsService } from '../core/services/notifications.service';
+import { RegisterComponent } from './dialogs/mis_dialogs/register/register.component';
 @NgModule({
   declarations: [
-    FormErrorComponent,
+    
     CardsComponent,
     ButtonsAndIconsComponent,
     EliminarComponent,
@@ -32,14 +36,16 @@ import { LoginComponent } from './dialogs/mis_dialogs/login/login.component';
     AgregarComponent,
     PatronIteradorComponent,
     LoginComponent,
+    RegisterComponent
   ],
   exports: [
-    FormErrorComponent,
+    
     CardsComponent,
     ButtonsAndIconsComponent,
     TablesComponent,
     PatronIteradorComponent,
     LoginComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
@@ -55,5 +61,6 @@ import { LoginComponent } from './dialogs/mis_dialogs/login/login.component';
     MatCheckboxModule,
     PipesModule,
   ],
+  providers: [SidenavTogglerService, AuthService,NotificationsService],
 })
 export class SharedModule {}
