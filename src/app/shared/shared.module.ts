@@ -16,41 +16,44 @@ import { EliminarComponent } from './dialogs/mis_dialogs/eliminar/eliminar.compo
 import { EditarComponent } from './dialogs/mis_dialogs/editar/editar.component';
 import { TablesComponent } from './tables/tables.components';
 import { MatTableModule } from '@angular/material/table';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AgregarComponent } from './dialogs/mis_dialogs/agregar/agregar.component';
-import { PipesModule } from "../pipes/pipes.module";
+import { PipesModule } from '../pipes/pipes.module';
 import { PatronIteradorComponent } from './patron-iterador/patron-iterador.component';
+import { LoginComponent } from './dialogs/mis_dialogs/login/login.component';
 @NgModule({
-    declarations: [
-        FormErrorComponent,
-        CardsComponent,
-        ButtonsAndIconsComponent,
-        EliminarComponent,
-        EditarComponent,
-        TablesComponent,
-        AgregarComponent,
-        PatronIteradorComponent,
-    ],
-    exports: [
-        FormErrorComponent,
-        CardsComponent,
-        ButtonsAndIconsComponent,
-        TablesComponent,
-        PatronIteradorComponent
-    ],
-    imports: [
-        CommonModule,
-        ReactiveFormsModule,
-        MatCardModule,
-        MatButtonModule,
-        MatIconModule,
-        MatDialogModule,
-        MatInputModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatTableModule,
-        MatCheckboxModule,
-        PipesModule
-    ]
+  declarations: [
+    FormErrorComponent,
+    CardsComponent,
+    ButtonsAndIconsComponent,
+    EliminarComponent,
+    EditarComponent,
+    TablesComponent,
+    AgregarComponent,
+    PatronIteradorComponent,
+    LoginComponent,
+  ],
+  exports: [
+    FormErrorComponent,
+    CardsComponent,
+    ButtonsAndIconsComponent,
+    TablesComponent,
+    PatronIteradorComponent,
+    LoginComponent,
+  ],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatTableModule,
+    MatCheckboxModule,
+    PipesModule,
+  ],
 })
 export class SharedModule {}

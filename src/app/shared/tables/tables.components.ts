@@ -1,10 +1,6 @@
 import {
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
+  Component
+
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Alumnos } from 'src/app/core/models';

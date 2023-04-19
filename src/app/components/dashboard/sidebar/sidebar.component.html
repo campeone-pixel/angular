@@ -1,7 +1,7 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #sidenav class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    <p>{{authUser?.mail}}</p>
+     <img width="50" height="50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVgJF9HAqGLoGIBh9AR-by9m0zSY3zKiPwaxt_uXuJTA&s">
     <button (click)="showFiller = !showFiller" mat-raised-button>
       Toggle extra text
     </button>

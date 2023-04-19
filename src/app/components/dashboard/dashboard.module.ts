@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -14,9 +12,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { BloqueRedondeadoModule } from '../../directives/bloque-redondeado/bloque-redondeado.module';
 
-
-import {SharedModule} from "../../shared/shared.module"
-import {MatTableModule} from '@angular/material/table';
+import { SharedModule } from '../../shared/shared.module';
+import { MatTableModule } from '@angular/material/table';
 import { FontSizeModule } from 'src/app/directives/font-size/font-size.module';
 import { ProfesoresModule } from '../../profesores/profesores.module';
 import { AlumnosModule } from '../../alumnos/alumnos.module';
@@ -24,6 +21,7 @@ import { ContenidoComponent } from './contenido/contenido.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { SidenavTogglerService } from 'src/app/core/services/sidenav-toggler.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @NgModule({
   declarations: [ContenidoComponent, SidebarComponent, ToolbarComponent],
@@ -40,12 +38,9 @@ import { SidenavTogglerService } from 'src/app/core/services/sidenav-toggler.ser
     MatTableModule,
     FontSizeModule,
     ProfesoresModule,
-    AlumnosModule
-    
+    AlumnosModule,
   ],
   exports: [ContenidoComponent, SidebarComponent, ToolbarComponent],
-  providers:[
-    SidenavTogglerService
-  ]
+  providers: [SidenavTogglerService, AuthService],
 })
 export class DashboardModule {}
