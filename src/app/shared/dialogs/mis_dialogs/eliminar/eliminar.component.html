@@ -2,8 +2,8 @@
   <mat-card>
     <mat-card-header>
       <mat-card-subtitle
-        >Desea eliminar el alumno {{ data.nombre }}
-        {{ data.apellido }}</mat-card-subtitle
+        >Desea eliminar el alumno {{ data?.nombre }}
+        {{ data?.apellido }}</mat-card-subtitle
       >
     </mat-card-header>
 
@@ -11,8 +11,9 @@
       <p>Elija una opcion</p>
     </mat-card-content>
     <mat-card-actions>
-      <button type="button" mat-button mat-dialog-close>Cancelar</button>
-      <button  mat-button [mat-dialog-close]="data">Borrar</button>
+
+      <button mat-button (click)="eliminar()">Eliminar</button>
+      <button mat-button (click)="onNoClick()">Cancelar</button>
     </mat-card-actions>
   </mat-card>
 </div>

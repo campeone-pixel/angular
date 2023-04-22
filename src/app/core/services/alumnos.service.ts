@@ -97,13 +97,23 @@ export class AlumnosService {
   }
 
   // Método para eliminar un alumno por su índice y emitir la lista actualizada como un Observable
-  delete(index: number): Observable<any[]> {
+  delete(alumno:Alumnos |undefined): Observable<any[]> {
+
+    const index = this.listaAlumnos.findIndex(
+      (elemento) => elemento.id === alumno?.id
+    );
+
     this.listaAlumnos.splice(index, 1);
+    
     return of(this.listaAlumnos);
   }
 
   // Método para actualizar la información de un alumno y emitir la lista actualizada como un Observable
-  update(index: number, updatedAlumno: any): Observable<any[]> {
+  update( updatedAlumno: any): Observable<any[]> {
+    const index = this.listaAlumnos.findIndex(
+      (elemento) => elemento.id === updatedAlumno?.id
+    );
+
     this.listaAlumnos[index] = updatedAlumno;
     return of(this.listaAlumnos);
   }

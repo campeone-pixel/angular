@@ -39,7 +39,7 @@
   >
 
   <div mat-dialog-action class="row w-100 d-flex gap-4">
-    <button mat-button [mat-dialog-close]="registerForm">Submit</button>
-    <button type="button" mat-button mat-dialog-close>Cancel</button>
+    <button mat-button (click)="add()">Submit</button>
+    <button mat-button (click)="onNoClick($event)">Cancelar</button>
   </div>
 </form>

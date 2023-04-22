@@ -1,20 +1,30 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Alumnos } from 'src/app/core/models';
+import { AlumnosService } from '../../../../core/services/alumnos.service';
 
 @Component({
   selector: 'app-eliminar',
   templateUrl: './eliminar.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class EliminarComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Alumnos,public dialogRef: MatDialogRef<EliminarComponent>,) {
+  constructor(
+    public dialogRef: MatDialogRef<EliminarComponent>,
+    private alumnosService: AlumnosService
+  ) {}
+
+  @Input() data?: Alumnos;
+
+  eliminar() {
     
+    this.alumnosService.delete(this.data);
+  
+    this.dialogRef.close();
   }
 
-  onNoClick(event: Event): void {
-    event.preventDefault();
+  onNoClick(): void {
+    
     this.dialogRef.close();
   }
 }
