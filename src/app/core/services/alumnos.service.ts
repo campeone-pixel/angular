@@ -77,44 +77,28 @@ export class AlumnosService {
 
   getAlumnos(): Observable<Alumnos[]> {
     return new Observable<Alumnos[]>((observer) => {
-      
-        observer.next(this.listaAlumnos);
-        observer.complete()
-      
-    });
-    
-  }
-
-  getAlumnoByID(id: number) {
-    return this.listaAlumnos.filter((alumno) => {
-      return alumno.id === id;
+      observer.next(this.listaAlumnos);
+      observer.complete();
     });
   }
 
-  add(alumno: any): Observable<any[]> {
+  add(alumno: any) {
     this.listaAlumnos.push(alumno);
-    return of(this.listaAlumnos);
   }
 
-  // Método para eliminar un alumno por su índice y emitir la lista actualizada como un Observable
-  delete(alumno:Alumnos |undefined): Observable<any[]> {
-
-    const index = this.listaAlumnos.findIndex(
-      (elemento) => elemento.id === alumno?.id
-    );
+  delete(alumno: Alumnos | undefined) {
+    const index = this.listaAlumnos.findIndex((elemento) => {
+      return elemento.id === alumno?.id;
+    });
 
     this.listaAlumnos.splice(index, 1);
-    
-    return of(this.listaAlumnos);
   }
 
-  // Método para actualizar la información de un alumno y emitir la lista actualizada como un Observable
-  update( updatedAlumno: any): Observable<any[]> {
+  update(updatedAlumno: any) {
     const index = this.listaAlumnos.findIndex(
       (elemento) => elemento.id === updatedAlumno?.id
     );
 
     this.listaAlumnos[index] = updatedAlumno;
-    return of(this.listaAlumnos);
   }
 }

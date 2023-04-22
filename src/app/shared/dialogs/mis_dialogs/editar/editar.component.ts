@@ -1,16 +1,11 @@
-import { Component, EventEmitter, Input, Output, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {
   FormBuilder,
-  FormArray,
   Validators,
   FormGroup,
   FormControl,
 } from '@angular/forms';
-import {
-  MAT_DIALOG_DATA,
-  MatDialog,
-  MatDialogRef,
-} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Alumnos } from 'src/app/core/models/alumnos.model';
 import { AlumnosService } from 'src/app/core/services/alumnos.service';
 import { NotificationsService } from 'src/app/core/services/notifications.service';
@@ -38,14 +33,13 @@ export class EditarComponent {
   ]);
 
   mejorAlumnoControl = new FormControl(false);
-  
 
   constructor(
     public formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: Alumnos,
     public dialogRef: MatDialogRef<EditarComponent>,
-    private alumnosService:AlumnosService,
-    private notification: NotificationsService,
+    private alumnosService: AlumnosService,
+    private notification: NotificationsService
   ) {
     this.registerForm = this.formBuilder.group({
       id: this.data.id,
@@ -57,11 +51,8 @@ export class EditarComponent {
     });
   }
 
-
-  editar(){
-    
+  editar() {
     if (this.registerForm.valid) {
-        
       const updatedAlumno = new Alumnos(
         this.registerForm.value.id,
         this.registerForm.value.nombre,
@@ -70,9 +61,8 @@ export class EditarComponent {
         this.registerForm.value.mejorAlumno,
         false
       );
-      this.alumnosService.update(updatedAlumno)
-        
-    
+      this.alumnosService.update(updatedAlumno);
+
       this.notification.mostrarMensaje('el usuario se creo correctamente');
       this.dialogRef.close();
     } else {
@@ -82,7 +72,6 @@ export class EditarComponent {
   }
 
   onNoClick(): void {
-    
     this.dialogRef.close();
   }
 }

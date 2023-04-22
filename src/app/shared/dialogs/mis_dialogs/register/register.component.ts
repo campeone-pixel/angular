@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import {
   FormBuilder,
   Validators,
@@ -6,6 +6,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Subject, takeUntil } from 'rxjs';
 
 import { User } from 'src/app/core/models';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -16,10 +17,9 @@ import { NotificationsService } from 'src/app/core/services/notifications.servic
   templateUrl: './register.component.html',
   styles: [],
 })
-export class RegisterComponent  {
-  
+export class RegisterComponent implements OnDestroy {
   loginForm: FormGroup = new FormGroup({});
-
+  destroyed$ = new Subject<void>();
   nombreControl = new FormControl('nombre', [
     Validators.required,
     Validators.minLength(5),
@@ -33,10 +33,7 @@ export class RegisterComponent  {
     Validators.required,
     Validators.email,
   ]);
-  passwordControl = new FormControl('12345', [
-    Validators.required,
-    
-  ]);
+  passwordControl = new FormControl('12345', [Validators.required]);
 
   constructor(
     private formBuilder: FormBuilder,
@@ -48,10 +45,13 @@ export class RegisterComponent  {
       nombre: this.nombreControl,
       apellido: this.apellidoControl,
       mail: this.mailControl,
-      password: this.passwordControl
+      password: this.passwordControl,
     });
   }
-
+  ngOnDestroy(): void {
+    this.destroyed$.next();
+    this.destroyed$.complete();
+  }
 
   onSubmit() {
     const usuarioAutenticado = new User(
@@ -62,16 +62,15 @@ export class RegisterComponent  {
       this.loginForm.value.password
     );
 
-    
-
-    this.authUser.registerUser(usuarioAutenticado).subscribe(
-      usuario =>{
+    this.authUser
+      .registerUser(usuarioAutenticado)
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe((usuario) => {
         if (!usuario) {
           this.mensaje.mostrarMensaje('Credenciales inválidas');
         } else {
           this.mensaje.mostrarMensaje('el usuario se logueo');
         }
-      }
-    );
+      });
   }
 }

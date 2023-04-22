@@ -1,11 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Alumnos } from 'src/app/core/models';
 import { EditarComponent } from '../dialogs/mis_dialogs/editar/editar.component';
 import { EliminarComponent } from '../dialogs/mis_dialogs/eliminar/eliminar.component';
 import { AgregarComponent } from '../dialogs/mis_dialogs/agregar/agregar.component';
 import { MatTableDataSource } from '@angular/material/table';
-
 
 import { AlumnosService } from 'src/app/core/services/alumnos.service';
 
@@ -15,13 +14,10 @@ import { AlumnosService } from 'src/app/core/services/alumnos.service';
   styles: [],
 })
 export class TablesComponent {
-  private listaAlumnos: any[] = [];
-
-  dataSource = new MatTableDataSource(this.listaAlumnos);
+  dataSource = new MatTableDataSource();
 
   constructor(
     private dialogService: MatDialog,
-   
     private alumnosService: AlumnosService
   ) {
     this.actualizarLista();
@@ -31,12 +27,13 @@ export class TablesComponent {
 
   actualizarLista(): void {
     this.alumnosService.getAlumnos().subscribe((alumnos) => {
-      this.listaAlumnos = alumnos;
       this.dataSource.data = alumnos;
     });
   }
 
   editarAlumno(alumno: Alumnos): void {
+
+   
     const dialog = this.dialogService.open(EditarComponent, { data: alumno });
 
     dialog.afterClosed().subscribe(() => {
@@ -45,6 +42,7 @@ export class TablesComponent {
   }
 
   eliminarAlumno(alumno: Alumnos): void {
+    
     const dialog = this.dialogService.open(EliminarComponent, { data: alumno });
     dialog.afterClosed().subscribe(() => {
       this.actualizarLista();
