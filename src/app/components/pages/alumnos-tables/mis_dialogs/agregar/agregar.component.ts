@@ -49,8 +49,9 @@ export class AgregarComponent {
 
   add(): void {
     if (this.registerForm.valid) {
+      const largo = this.alumnosService.listaAlumnos.length
       const nuevoAlumno = new Alumnos(
-        this.alumnosService.listaAlumnos.length + 1,
+        this.alumnosService.listaAlumnos[largo-1].id + 1,
         this.registerForm.value.nombre,
         this.registerForm.value.apellido,
         this.registerForm.value.mail,

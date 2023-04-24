@@ -15,13 +15,13 @@ export class SidebarComponent implements OnInit, OnDestroy {
   showFiller = false;
 
   @ViewChild('sidenav') private sidenav?: MatSidenav;
-  authUserObs$: Observable<User|null>;
+  // authUserObs$: Observable<User|null>;
 
   constructor(
     private sidenavTogglerService: SidenavTogglerService,
     private authService: AuthService
   ) {
-    this.authUserObs$ = this.authService.obtenerUsuarioAutenticado()
+    // this.authUserObs$ = this.authService.obtenerUsuarioAutenticado()
     // this.authService
     //   .obtenerUsuarioAutenticado()
     //   .pipe(takeUntil(this.destroyed$))

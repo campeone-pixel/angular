@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-import { AlumnosService } from '../../../../core/services/alumnos.service';
+import { AlumnosService } from 'src/app/core/services/alumnos.service';
 
 @Component({
   selector: 'app-eliminar',
