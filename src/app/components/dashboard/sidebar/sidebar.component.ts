@@ -4,6 +4,7 @@ import { Observable, Subject, takeUntil } from 'rxjs';
 import { Alumnos, User } from 'src/app/core/models';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { SidenavTogglerService } from 'src/app/core/services/sidenav-toggler.service';
+import links from './nav-items';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,6 +14,8 @@ import { SidenavTogglerService } from 'src/app/core/services/sidenav-toggler.ser
 export class SidebarComponent implements OnInit, OnDestroy {
   private destroyed$ = new Subject<void>();
   showFiller = false;
+
+  links = links
 
   @ViewChild('sidenav') private sidenav?: MatSidenav;
   // authUserObs$: Observable<User|null>;

@@ -6,8 +6,9 @@ import { User } from 'src/app/core/models';
 
 import { AuthService } from 'src/app/core/services/auth.service';
 import { enviroments } from 'src/enviroments/enviroments.prod';
-// import { LoginComponent } from '../../pages/login/login.component';
-// import { RegisterComponent } from '../../pages/register/register.component';
+import { LoginComponent } from 'src/app/auth/pages/login/login.component';
+import { RegisterComponent } from 'src/app/auth/pages/register/register.component';
+
 
 
 @Component({
@@ -26,36 +27,36 @@ export class ToolbarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.updateUserAuth()
+    this.updateUserAuth()
   }
 
   clickMenu() {
     this.sidenavTogglerService.toggle();
   }
 
-  // openLoginDialog() {
-  //   const dialogRef = this.dialog.open(LoginComponent, {
-  //     disableClose: true,
-  //   });
-  // }
+  openLoginDialog() {
+    const dialogRef = this.dialog.open(LoginComponent, {
+      disableClose: true,
+    });
+  }
 
-  // openRegisterDialog(){
-  //   const dialogRef = this.dialog.open(RegisterComponent, {
-  //     disableClose: true,
-  //   });
-  // }
+  openRegisterDialog(){
+    const dialogRef = this.dialog.open(RegisterComponent, {
+      disableClose: true,
+    });
+  }
 
-  // updateUserAuth(){
-  //  this.authService
-  //   .obtenerUsuarioAutenticado()
-  //   .subscribe((user) => (this.userAuth = user));
-  // }
+  updateUserAuth(){
+   this.authService
+    .obtenerUsuarioAutenticado()
+    .subscribe((user) => (this.userAuth = user));
+  }
 
-  // logout() {
+  logout() {
   
-  //   this.authService.logout()
-  //   this.userAuth = null
+    this.authService.logout()
+    this.userAuth = null
   
-  // }
+  }
 
 }

@@ -1,18 +1,28 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #sidenav class="example-sidenav" mode="side">
     <!-- <p>{{(authUserObs$ | async)?.mail }}</p> -->
-     <img width="50" height="50" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVgJF9HAqGLoGIBh9AR-by9m0zSY3zKiPwaxt_uXuJTA&s">
- 
+    <img
+      width="50"
+      height="50"
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVgJF9HAqGLoGIBh9AR-by9m0zSY3zKiPwaxt_uXuJTA&s"
+    />
+
+    <mat-nav-list>
+      <a
+        mat-list-item
+        [routerLink]="link.path"
+        *ngFor="let link of links"
+        >
+        
+        <mat-icon *ngIf="link.icon">{{link.icon}}</mat-icon>
+        {{ link.title }}</a
+        >
+        
+     
+    </mat-nav-list>
   </mat-drawer>
 
   <div class="example-sidenav-content">
- 
-
     <app-contenido></app-contenido>
-
-    
   </div>
-
 </mat-drawer-container>
-
-

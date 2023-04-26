@@ -5,6 +5,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AlumnosTablesComponent } from './components/pages/alumnos-tables/alumnos-tables.components';
 import { CardsComponent } from './components/pages/cards/cards.component';
+import { AuthComponent } from './auth/auth.component';
+import { LoginComponent } from './auth/pages/login/login.component';
+import { RegisterComponent } from './auth/pages/register/register.component';
 
 const routes: Routes = [
   {path:"dashboard",
@@ -19,6 +22,19 @@ children:[
     component:CardsComponent
   },
 ]},
+
+{
+path:"auth",
+component:AuthComponent,
+children:[
+  {path:"login",
+component: LoginComponent},
+{
+  path:"register",
+  component:RegisterComponent
+}
+]
+},
 
 
 {path:'dashboard',

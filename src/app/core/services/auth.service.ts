@@ -8,6 +8,7 @@ import { User } from '../models';
 export class AuthService {
   listaUser: Array<User> = [
     new User(1, 'paula', 'paula', 'paula@mail.com', '12345'),
+    new User(2,'mail','mailapellido','mail@mail.com','12345')
   ];
 
   private authUser$ = new Subject<User | null>();
