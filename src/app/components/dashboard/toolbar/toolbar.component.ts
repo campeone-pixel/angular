@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { SidenavTogglerService } from 'src/app/core/services/sidenav-toggler.service';
 
@@ -6,11 +6,8 @@ import { User } from 'src/app/core/models';
 
 import { AuthService } from 'src/app/core/services/auth.service';
 import { enviroments } from 'src/enviroments/enviroments.prod';
-import { LoginComponent } from 'src/app/auth/pages/login/login.component';
-import { RegisterComponent } from 'src/app/auth/pages/register/register.component';
+
 import { Router } from '@angular/router';
-
-
 
 @Component({
   selector: 'app-toolbar',
@@ -19,17 +16,17 @@ import { Router } from '@angular/router';
 })
 export class ToolbarComponent implements OnInit {
   isProd = enviroments.isProduction;
-  userAuth:User|null = null
+  userAuth: User | null = null;
 
   constructor(
     private sidenavTogglerService: SidenavTogglerService,
     public dialog: MatDialog,
-    public authService:AuthService,
-    private router:Router
+    public authService: AuthService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.updateUserAuth()
+    this.authService.getUser().subscribe((user) => (this.userAuth = user));
   }
 
   clickMenu() {
@@ -37,24 +34,19 @@ export class ToolbarComponent implements OnInit {
   }
 
   openLogin() {
-  this.router.navigate(['auth','login'])
+    this.router.navigate(['auth', 'login']);
   }
 
-  openRegister(){
-    this.router.navigate(['auth','register'])
+  openRegister() {
+    this.router.navigate(['auth', 'register']);
   }
 
-  updateUserAuth(){
-   this.authService
-    .obtenerUsuarioAutenticado()
-    .subscribe((user) => (this.userAuth = user));
+  updateUserAuth() {
+    this.authService.getUser().subscribe((user) => (this.userAuth = user));
   }
 
   logout() {
-  
-    this.authService.logout()
-    this.userAuth = null
-  
+    this.authService.logout();
+    this.userAuth = null;
   }
-
 }

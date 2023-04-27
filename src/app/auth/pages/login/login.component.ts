@@ -5,7 +5,7 @@ import {
   FormGroup,
   FormControl,
 } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -29,7 +29,7 @@ export class LoginComponent implements OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-private router:Router,
+    private router: Router,
     private authUser: AuthService,
     private mensaje: NotificationsService
   ) {
@@ -42,6 +42,9 @@ private router:Router,
     this.destroyed$.next();
     this.destroyed$.complete();
   }
+  cancel() {
+    this.router.navigate(['dashboard', 'alumnos']);
+  }
 
   onSubmit() {
     this.authUser
@@ -52,9 +55,8 @@ private router:Router,
           this.mensaje.mostrarMensaje('Credenciales inválidas');
         } else {
           this.mensaje.mostrarMensaje('el usuario se logueo');
-          this.router.navigate(['dashboard', 'alumnos'])
+          this.router.navigate(['dashboard', 'alumnos']);
         }
       });
-     
   }
 }
