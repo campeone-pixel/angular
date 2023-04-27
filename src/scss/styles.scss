@@ -69,3 +69,22 @@ form {
 .example-sidenav {
   padding: 1em;
 }
+
+.container.auth.login,
+.container.auth.register{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  form {
+    height: 400px;
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+}

@@ -8,6 +8,7 @@ import { CardsComponent } from './components/pages/cards/cards.component';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
+import { DetalleAlumnoComponent } from './components/pages/alumnos-tables/detalle-alumno/detalle-alumno.component';
 
 const routes: Routes = [
   {path:"dashboard",
@@ -16,11 +17,14 @@ children:[
   {
     path:"alumnos",
     component:AlumnosTablesComponent
+    
   },
   {
     path:"cards",
     component:CardsComponent
   },
+  {path:'alumnos/:id',
+component:DetalleAlumnoComponent}
 ]},
 
 {

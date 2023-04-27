@@ -6,6 +6,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -28,7 +29,7 @@ export class LoginComponent implements OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-
+private router:Router,
     private authUser: AuthService,
     private mensaje: NotificationsService
   ) {
@@ -51,7 +52,9 @@ export class LoginComponent implements OnDestroy {
           this.mensaje.mostrarMensaje('Credenciales inválidas');
         } else {
           this.mensaje.mostrarMensaje('el usuario se logueo');
+          this.router.navigate(['dashboard', 'alumnos'])
         }
       });
+     
   }
 }

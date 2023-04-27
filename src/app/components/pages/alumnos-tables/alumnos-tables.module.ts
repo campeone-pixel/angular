@@ -17,12 +17,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 import { AlumnosTablesComponent } from './alumnos-tables.components';
+import { DetalleAlumnoComponent } from './detalle-alumno/detalle-alumno.component';
 
 
 
 
 @NgModule({
-  declarations: [AlumnosTablesComponent,AgregarComponent,EliminarComponent,EditarComponent],
+  declarations: [AlumnosTablesComponent,AgregarComponent,EliminarComponent,EditarComponent, DetalleAlumnoComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,

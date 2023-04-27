@@ -8,6 +8,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { enviroments } from 'src/enviroments/enviroments.prod';
 import { LoginComponent } from 'src/app/auth/pages/login/login.component';
 import { RegisterComponent } from 'src/app/auth/pages/register/register.component';
+import { Router } from '@angular/router';
 
 
 
@@ -23,7 +24,8 @@ export class ToolbarComponent implements OnInit {
   constructor(
     private sidenavTogglerService: SidenavTogglerService,
     public dialog: MatDialog,
-    public authService:AuthService
+    public authService:AuthService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -34,16 +36,12 @@ export class ToolbarComponent implements OnInit {
     this.sidenavTogglerService.toggle();
   }
 
-  openLoginDialog() {
-    const dialogRef = this.dialog.open(LoginComponent, {
-      disableClose: true,
-    });
+  openLogin() {
+  this.router.navigate(['auth','login'])
   }
 
-  openRegisterDialog(){
-    const dialogRef = this.dialog.open(RegisterComponent, {
-      disableClose: true,
-    });
+  openRegister(){
+    this.router.navigate(['auth','register'])
   }
 
   updateUserAuth(){

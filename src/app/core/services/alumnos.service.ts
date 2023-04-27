@@ -101,4 +101,17 @@ export class AlumnosService {
 
     this.listaAlumnos[index] = updatedAlumno;
   }
+
+obtenerAlumnoPorID(id:number): Alumnos | undefined{
+
+  const personaConId = this.listaAlumnos.find((e) => e.id === id);
+
+  return personaConId
+
+
 }
+
+
+}
+
+

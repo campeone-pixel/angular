@@ -37,7 +37,7 @@ export class RegisterComponent implements OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    public dialogRef: MatDialogRef<RegisterComponent>,
+   
     private authUser: AuthService,
     private mensaje: NotificationsService
   ) {
