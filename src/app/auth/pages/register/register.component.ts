@@ -5,7 +5,7 @@ import {
   FormGroup,
   FormControl,
 } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 
 import { User } from 'src/app/core/models';
@@ -37,7 +37,7 @@ export class RegisterComponent implements OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-   
+    private router: Router,
     private authUser: AuthService,
     private mensaje: NotificationsService
   ) {
@@ -51,6 +51,10 @@ export class RegisterComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.destroyed$.next();
     this.destroyed$.complete();
+  }
+
+  cancel() {
+    this.router.navigate(['dashboard', 'alumnos']);
   }
 
   onSubmit() {
@@ -69,7 +73,8 @@ export class RegisterComponent implements OnDestroy {
         if (!usuario) {
           this.mensaje.mostrarMensaje('Credenciales inválidas');
         } else {
-          this.mensaje.mostrarMensaje('el usuario se logueo');
+          this.mensaje.mostrarMensaje('Registro exitoso');
+          this.router.navigate(['dashboard', 'alumnos']);
         }
       });
   }

@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
-import { Observable, Subject, takeUntil } from 'rxjs';
-import { Alumnos, User } from 'src/app/core/models';
+import { Subject, takeUntil } from 'rxjs';
+
 import { AuthService } from 'src/app/core/services/auth.service';
 import { SidenavTogglerService } from 'src/app/core/services/sidenav-toggler.service';
 import links from './nav-items';
@@ -15,20 +15,22 @@ export class SidebarComponent implements OnInit, OnDestroy {
   private destroyed$ = new Subject<void>();
   showFiller = false;
 
-  links = links
+  links = links;
 
   @ViewChild('sidenav') private sidenav?: MatSidenav;
-  // authUserObs$: Observable<User|null>;
+  authUser: any;
 
   constructor(
     private sidenavTogglerService: SidenavTogglerService,
     private authService: AuthService
   ) {
-    // this.authUserObs$ = this.authService.obtenerUsuarioAutenticado()
-    // this.authService
-    //   .obtenerUsuarioAutenticado()
-    //   .pipe(takeUntil(this.destroyed$))
-    //   .subscribe((user) => (this.authUser = user));
+    this.authService
+      .getUser()
+      .pipe(takeUntil(this.destroyed$))
+      .subscribe((user) => {
+        console.log(user);
+        this.authUser = user;
+      });
   }
 
   ngOnDestroy(): void {
