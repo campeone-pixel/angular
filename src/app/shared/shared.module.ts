@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { CardsComponent } from '../components/pages/cards/cards.component';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { ButtonsAndIconsComponent } from './buttons-and-icons/buttons-and-icons.component';
@@ -21,6 +21,7 @@ import { PatronIteradorComponent } from './patron-iterador/patron-iterador.compo
 import { SidenavTogglerService } from '../core/services/sidenav-toggler.service';
 import { AuthService } from '../core/services/auth.service';
 import { NotificationsService } from '../core/services/notifications.service';
+import { CardsComponent } from '../dashboard/pages/cards/cards.component';
 
 @NgModule({
   declarations: [

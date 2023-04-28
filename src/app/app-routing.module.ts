@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 
 import { RouterModule, Routes } from '@angular/router';
-
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { AlumnosTablesComponent } from './components/pages/alumnos-tables/alumnos-tables.components';
-import { CardsComponent } from './components/pages/cards/cards.component';
 import { AuthComponent } from './auth/auth.component';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
-import { DetalleAlumnoComponent } from './components/pages/alumnos-tables/detalle-alumno/detalle-alumno.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+
+import { AlumnosTablesComponent } from './dashboard/pages/alumnos/alumnos-tables.components';
+import { DetalleAlumnoComponent } from './dashboard/pages/alumnos/detalle-alumno/detalle-alumno.component';
+import { CursosComponent } from './dashboard/pages/cursos/cursos.component';
+
 
 const routes: Routes = [
   {
@@ -19,11 +21,9 @@ const routes: Routes = [
         path: 'alumnos',
         component: AlumnosTablesComponent,
       },
-      {
-        path: 'cards',
-        component: CardsComponent,
-      },
+     
       { path: 'alumnos/:id', component: DetalleAlumnoComponent },
+      { path: 'cursos', component: CursosComponent },
     ],
   },
 

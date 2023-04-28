@@ -1,9 +1,10 @@
 import { Component, OnInit, Output,OnChanges,SimpleChanges, } from '@angular/core';
 
 import { Alumnos } from 'src/app/core/models';
-import { AuthService } from '../../../core/services/auth.service';
+
 import { AlumnosService } from 'src/app/core/services/alumnos.service';
 import { Observable } from 'rxjs';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 
 

@@ -1,11 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AgregarComponent } from './mis_dialogs/agregar/agregar.component';
-import { EliminarComponent } from './mis_dialogs/eliminar/eliminar.component';
-import { EditarComponent } from './mis_dialogs/editar/editar.component';
-import { SidenavTogglerService } from 'src/app/core/services/sidenav-toggler.service';
-import { AuthService } from 'src/app/core/services/auth.service';
-import { NotificationsService } from 'src/app/core/services/notifications.service';
+import { CursosComponent } from './cursos.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -16,16 +11,21 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { PipesModule } from 'src/app/pipes/pipes.module';
-import { AlumnosTablesComponent } from './alumnos-tables.components';
-import { DetalleAlumnoComponent } from './detalle-alumno/detalle-alumno.component';
+import { AgregarComponent } from './abm/agregar/agregar.component';
+import { EditarComponent } from './abm/editar/editar.component';
+import { EliminarComponent } from './abm/eliminar/eliminar.component';
+import { DetalleCursoComponent } from './detalle-curso/detalle-curso.component';
 
 
 
 
 @NgModule({
-  declarations: [AlumnosTablesComponent,AgregarComponent,EliminarComponent,EditarComponent, DetalleAlumnoComponent],
+  declarations: [
+    CursosComponent,AgregarComponent,EliminarComponent,EditarComponent, DetalleCursoComponent
+  ],
   imports: [
     CommonModule,
+    
     ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
@@ -39,8 +39,7 @@ import { DetalleAlumnoComponent } from './detalle-alumno/detalle-alumno.componen
     PipesModule,
   ],
   exports:[
-    AlumnosTablesComponent
-  ],
-  providers: [SidenavTogglerService, AuthService,NotificationsService],
+    CursosComponent
+  ]
 })
-export class AlumnosTablesModule { }
+export class CursosModule { }

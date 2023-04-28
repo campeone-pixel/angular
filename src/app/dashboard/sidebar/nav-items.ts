@@ -10,9 +10,9 @@ const links : NavItem[]= [
 title:"Estudiantes",
 icon:'person' },
 {
-    path:'cards',
-    title:"Cards",
-    icon:"dashboard_customize"
+    path:'cursos',
+    title:"Cursos",
+    icon:"school"
 }
 ]
 

@@ -2,14 +2,15 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { Alumnos, User } from 'src/app/core/models';
-import { EditarComponent } from './mis_dialogs/editar/editar.component';
-import { EliminarComponent } from './mis_dialogs/eliminar/eliminar.component';
-import { AgregarComponent } from './mis_dialogs/agregar/agregar.component';
+import { Alumnos } from 'src/app/core/models';
+
 
 
 import { AlumnosService } from 'src/app/core/services/alumnos.service';
 import { Router } from '@angular/router';
+import { AgregarComponent } from './abm/agregar/agregar.component';
+import { EditarComponent } from './abm/editar/editar.component';
+import { EliminarComponent } from './abm/eliminar/eliminar.component';
 
 @Component({
   selector: 'app-alumnos-tables',

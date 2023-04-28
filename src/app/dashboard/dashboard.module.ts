@@ -11,15 +11,18 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SharedModule } from '../../shared/shared.module';
-import { ContenidoComponent } from './contenido/contenido.component';
-import { ToolbarComponent } from './toolbar/toolbar.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { SidenavTogglerService } from 'src/app/core/services/sidenav-toggler.service';
-import { AuthService } from 'src/app/core/services/auth.service';
-import { AlumnosTablesModule } from '../pages/alumnos-tables/alumnos-tables.module';
+import { AuthService } from '../core/services/auth.service';
+import { SidenavTogglerService } from '../core/services/sidenav-toggler.service';
+
 import { DashboardComponent } from './dashboard.component';
-import { AuthModule } from 'src/app/auth/auth.module';
+
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { ContenidoComponent } from './contenido/contenido.component';
+import { AlumnosTablesModule } from './pages/alumnos/alumnos-tables.module';
+import { AuthModule } from '../auth/auth.module';
+import { MatCardModule } from '@angular/material/card';
+import { CursosModule } from './pages/cursos/cursos.module';
 
 @NgModule({
   declarations: [
@@ -39,12 +42,13 @@ import { AuthModule } from 'src/app/auth/auth.module';
     MatButtonModule,
     MatSidenavModule,
     MatTableModule,
-
+    MatCardModule,
     RouterModule,
     AlumnosTablesModule,
-    SharedModule,
     AuthModule,
+    CursosModule,
     MatListModule,
+    MatCardModule,
   ],
 })
 export class DashboardModule {}
