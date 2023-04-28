@@ -6,8 +6,8 @@ import {
   FormControl,
 } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Alumnos } from 'src/app/core/models/alumnos.model';
-import { AlumnosService } from 'src/app/core/services/alumnos.service';
+
+import { CursosService } from 'src/app/core/services/cursos.service';
 import { NotificationsService } from 'src/app/core/services/notifications.service';
 @Component({
   selector: 'app-agregar',
@@ -22,43 +22,31 @@ export class AgregarComponent {
     Validators.minLength(5),
   ]);
 
-  apellidoControl = new FormControl('apellido', [
-    Validators.required,
-    Validators.minLength(5),
-  ]);
-  mailControl = new FormControl('mail@mail.com', [
-    Validators.required,
-    Validators.email,
-  ]);
-
-  mejorAlumnoControl = new FormControl(false);
+  fechaInicioControl = new FormControl('fecha inicio', [Validators.required]);
+  fechaFinControl = new FormControl('fecha fin', [Validators.required]);
 
   constructor(
     public formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AgregarComponent>,
     private notification: NotificationsService,
-    private alumnosService: AlumnosService
+    private cursoService: CursosService
   ) {
     this.registerForm = this.formBuilder.group({
       nombre: this.nombreControl,
-      apellido: this.apellidoControl,
-      mail: this.mailControl,
-      mejorAlumno: this.mejorAlumnoControl,
+      fecha_inicio: this.fechaInicioControl,
+      fecha_fin: this.fechaFinControl,
     });
   }
 
   add(): void {
     if (this.registerForm.valid) {
-      const largo = this.alumnosService.listaAlumnos.length
-      const nuevoAlumno = new Alumnos(
-        this.alumnosService.listaAlumnos[largo-1].id + 1,
-        this.registerForm.value.nombre,
-        this.registerForm.value.apellido,
-        this.registerForm.value.mail,
-        this.registerForm.value.mejorAlumno,
-        false
-      );
-      this.alumnosService.add(nuevoAlumno);
+      const nuevoCurso = {
+        nombre: this.registerForm.value.nombre,
+        fecha_inicio: this.registerForm.value.fecha_inicio,
+        fecha_fin: this.registerForm.value.fecha_fin,
+      };
+
+      this.cursoService.addCurso(nuevoCurso);
 
       this.notification.mostrarMensaje('el usuario se creo correctamente');
       this.dialogRef.close();
@@ -68,8 +56,5 @@ export class AgregarComponent {
     }
   }
 
-  onNoClick(event: Event): void {
-    event.preventDefault();
-    this.dialogRef.close();
-  }
+  onNoClick() {}
 }

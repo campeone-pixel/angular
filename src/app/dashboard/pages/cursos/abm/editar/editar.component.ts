@@ -7,7 +7,8 @@ import {
 } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Alumnos } from 'src/app/core/models/alumnos.model';
-import { AlumnosService } from 'src/app/core/services/alumnos.service';
+import { Cursos } from 'src/app/core/models/cursos.models';
+import { CursosService } from 'src/app/core/services/cursos.service';
 import { NotificationsService } from 'src/app/core/services/notifications.service';
 
 @Component({
@@ -23,47 +24,35 @@ export class EditarComponent {
     Validators.minLength(5),
   ]);
 
-  apellidoControl = new FormControl('apellido', [
-    Validators.required,
-    Validators.minLength(5),
-  ]);
-  mailControl = new FormControl('mail@mail.com', [
-    Validators.required,
-    Validators.email,
-  ]);
-
-  mejorAlumnoControl = new FormControl(false);
+  fechaInicioControl = new FormControl('fecha inicio', [Validators.required]);
+  fechaFinControl = new FormControl('fecha fin', [Validators.required]);
 
   constructor(
     public formBuilder: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: Alumnos,
-    public dialogRef: MatDialogRef<EditarComponent>,
-    private alumnosService: AlumnosService,
-    private notification: NotificationsService
+
+    private notification: NotificationsService,
+    private cursoService: CursosService,
+    @Inject(MAT_DIALOG_DATA) public data: Cursos,
+    public dialogRef: MatDialogRef<EditarComponent>
   ) {
     this.registerForm = this.formBuilder.group({
-      id: this.data.id,
       nombre: this.data.nombre,
-      apellido: this.data.apellido,
-      mail: this.data.mail,
-      mejorAlumno: this.data.mejorAlumno,
-      eliminado: this.data.eliminado,
+      fecha_inicio: this.data.fecha_inicio,
+      fecha_fin: this.data.fecha_fin,
     });
   }
 
-  editar() {
+  update() {
     if (this.registerForm.valid) {
-      const updatedAlumno = new Alumnos(
-        this.registerForm.value.id,
-        this.registerForm.value.nombre,
-        this.registerForm.value.apellido,
-        this.registerForm.value.mail,
-        this.registerForm.value.mejorAlumno,
-        false
-      );
-      this.alumnosService.update(updatedAlumno);
+      const nuevoCurso = {
+        nombre: this.registerForm.value.nombre,
+        fecha_inicio: this.registerForm.value.fecha_inicio,
+        fecha_fin: this.registerForm.value.fecha_fin,
+      };
 
-      this.notification.mostrarMensaje('el usuario se creo correctamente');
+      this.cursoService.updateCurso(nuevoCurso, this.data.id);
+
+      this.notification.mostrarMensaje('se realizo la edicion del curso');
       this.dialogRef.close();
     } else {
       alert('no es valido');
@@ -71,7 +60,5 @@ export class EditarComponent {
     }
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+  onNoClick(): void {}
 }

@@ -1,52 +1,32 @@
 <form [formGroup]="registerForm">
+  
+  
   <mat-form-field class="mb-3 w-100">
-    <mat-label class="form-label">Nombre</mat-label>
-    <input
-      matInput
-      formControlName="nombre"
-      type="text"
-      [class.is-invalid]="nombreControl.invalid && nombreControl.touched"
-    />
-    <mat-error *ngFor="let error of nombreControl.errors | keyvalue">
-      {{ error | controlErrorsMessage }}
-     </mat-error>
+    <mat-label  class="form-label">Nombre</mat-label>
+    <input matInput [formControl]="nombreControl" type="text" />
+
+
   </mat-form-field>
 
   <mat-form-field class="mb-3 w-100">
-    <mat-label for="exampleInputPassword1" class="form-label"
-      >Apellido</mat-label
+    <mat-label class="form-label"
+      >Fecha fin</mat-label
     >
-    <input
-      matInput
-      formControlName="apellido"
-      type="text"
-      [class.is-invalid]="apellidoControl.invalid && apellidoControl.touched"
-    />
-    <mat-error *ngFor="let error of apellidoControl.errors | keyvalue">
-      {{ error | controlErrorsMessage }}
-     </mat-error>
+    <input matInput [formControl]="fechaFinControl" type="text" />
+  
   </mat-form-field>
 
   <mat-form-field class="mb-3 w-100">
-    <mat-label for="exampleInputEmail1" class="form-label"
-      >Email address</mat-label
+    <mat-label class="form-label"
+      >Fecha Inicio</mat-label
     >
-    <input
-      matInput
-      formControlName="mail"
-      type="email"
-      aria-describedby="emailHelp"
-      [class.is-invalid]="mailControl.invalid && mailControl.touched"
-    />
-    <mat-error *ngFor="let error of mailControl.errors | keyvalue">
-      {{ error | controlErrorsMessage }}
-     </mat-error>
+    <input matInput [formControl]="fechaInicioControl" />
+  
   </mat-form-field>
 
-  <mat-checkbox formControlName="mejorAlumno">Mejor Alumno</mat-checkbox>
 
   <div mat-dialog-action class="row w-100 d-flex gap-4">
-    <button mat-button (click)="editar()">Submit</button>
-    <button type="button" mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button (click)="update()">Submit</button>
+    <button mat-button (click)="onNoClick()">Cancelar</button>
   </div>
 </form>

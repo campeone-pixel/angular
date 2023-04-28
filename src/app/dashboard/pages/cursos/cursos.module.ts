@@ -16,16 +16,17 @@ import { EditarComponent } from './abm/editar/editar.component';
 import { EliminarComponent } from './abm/eliminar/eliminar.component';
 import { DetalleCursoComponent } from './detalle-curso/detalle-curso.component';
 
-
-
-
 @NgModule({
   declarations: [
-    CursosComponent,AgregarComponent,EliminarComponent,EditarComponent, DetalleCursoComponent
+    CursosComponent,
+    AgregarComponent,
+    EliminarComponent,
+    EditarComponent,
+    DetalleCursoComponent,
   ],
   imports: [
     CommonModule,
-    
+
     ReactiveFormsModule,
     MatCardModule,
     MatButtonModule,
@@ -38,8 +39,6 @@ import { DetalleCursoComponent } from './detalle-curso/detalle-curso.component';
     MatCheckboxModule,
     PipesModule,
   ],
-  exports:[
-    CursosComponent
-  ]
+  exports: [CursosComponent],
 })
-export class CursosModule { }
+export class CursosModule {}
