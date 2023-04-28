@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlumnosService } from '../../../../core/services/alumnos.service';
-import { Alumnos } from '../../../../core/models/alumnos.model';
+
+import { Cursos } from 'src/app/core/models/cursos.models';
+import { CursosService } from 'src/app/core/services/cursos.service';
 
 @Component({
   selector: 'app-detalle-curso',
@@ -11,11 +13,13 @@ import { Alumnos } from '../../../../core/models/alumnos.model';
 })
 export class DetalleCursoComponent {
 
-detalleAlumno:Alumnos|undefined;
+detalleCurso:Cursos|undefined;
 
 constructor(private activatedRoute:ActivatedRoute,
-  private alumnosService: AlumnosService){
-  this.detalleAlumno = this.alumnosService.obtenerAlumnoPorID(parseInt(this.activatedRoute.snapshot.params['id']))
+  private cursoService: CursosService){
+  this.cursoService.obtenerCursoPorID(parseInt(this.activatedRoute.snapshot.params['id'])).subscribe((curso)=>{
+    this.detalleCurso = curso
+  })
   
 }
 

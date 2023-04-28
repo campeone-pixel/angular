@@ -3,7 +3,7 @@
   
   <mat-form-field class="mb-3 w-100">
     <mat-label  class="form-label">Nombre</mat-label>
-    <input matInput [formControl]="nombreControl" type="text" />
+    <input matInput formControlName="nombre" type="text" />
 
 
   </mat-form-field>
@@ -12,7 +12,7 @@
     <mat-label class="form-label"
       >Fecha fin</mat-label
     >
-    <input matInput [formControl]="fechaFinControl" type="text" />
+    <input matInput formControlName="fecha_fin" type="date" />
   
   </mat-form-field>
 
@@ -20,7 +20,7 @@
     <mat-label class="form-label"
       >Fecha Inicio</mat-label
     >
-    <input matInput [formControl]="fechaInicioControl" />
+    <input matInput formControlName="fecha_inicio" type="date"/>
   
   </mat-form-field>
 

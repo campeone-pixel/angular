@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {
   FormBuilder,
   Validators,
@@ -10,22 +10,17 @@ import { Alumnos } from 'src/app/core/models/alumnos.model';
 import { Cursos } from 'src/app/core/models/cursos.models';
 import { CursosService } from 'src/app/core/services/cursos.service';
 import { NotificationsService } from 'src/app/core/services/notifications.service';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-editar',
   templateUrl: './editar.component.html',
   styles: [],
 })
-export class EditarComponent {
+export class EditarComponent implements OnInit {
   registerForm: FormGroup = new FormGroup({});
 
-  nombreControl = new FormControl('nombre', [
-    Validators.required,
-    Validators.minLength(5),
-  ]);
 
-  fechaInicioControl = new FormControl('fecha inicio', [Validators.required]);
-  fechaFinControl = new FormControl('fecha fin', [Validators.required]);
 
   constructor(
     public formBuilder: FormBuilder,
@@ -36,20 +31,33 @@ export class EditarComponent {
     public dialogRef: MatDialogRef<EditarComponent>
   ) {
     this.registerForm = this.formBuilder.group({
+
+      nombre: new FormControl('', [Validators.required, Validators.minLength(3)]),
+      fecha_inicio: new FormControl('', [Validators.required]),
+      fecha_fin: new FormControl('', [Validators.required]),
+    
+    });
+    console.log(this.registerForm.value)
+
+  }
+
+  ngOnInit(){
+    this.registerForm.patchValue({
       nombre: this.data.nombre,
       fecha_inicio: this.data.fecha_inicio,
-      fecha_fin: this.data.fecha_fin,
-    });
-  }
+      fecha_fin: this.data.fecha_fin
+    })
+    }
 
   update() {
     if (this.registerForm.valid) {
+      console.log(this.registerForm.value)
       const nuevoCurso = {
         nombre: this.registerForm.value.nombre,
         fecha_inicio: this.registerForm.value.fecha_inicio,
         fecha_fin: this.registerForm.value.fecha_fin,
       };
-
+      
       this.cursoService.updateCurso(nuevoCurso, this.data.id);
 
       this.notification.mostrarMensaje('se realizo la edicion del curso');
@@ -60,5 +68,7 @@ export class EditarComponent {
     }
   }
 
-  onNoClick(): void {}
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

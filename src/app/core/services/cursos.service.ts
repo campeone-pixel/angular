@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, find, Observable, take } from 'rxjs';
+import { BehaviorSubject, find, map, Observable, take } from 'rxjs';
 import { CrearCursoPayload, Cursos } from '../models/cursos.models';
 
 @Injectable({
@@ -32,9 +32,9 @@ export class CursosService {
     return this.cursos$.asObservable();
   }
 
-  deleteCurso(id: number): void {
+  deleteCurso(data: Cursos): void {
     const elementosActuales = this.cursos$.value;
-    const nuevosElementos = elementosActuales.filter(e => e.id !== id);
+    const nuevosElementos = elementosActuales.filter(e => e.id !== data.id);
     this.cursos$.next(nuevosElementos);
   }
 
@@ -51,7 +51,14 @@ export class CursosService {
     });
     this.cursos$.next(updatedItems);
   }
-  
+
+  obtenerCursoPorID(id:number): Observable<Cursos | undefined>{
+
+    return this.cursos$.asObservable()
+    .pipe(
+      map((cursos) => cursos.find((c) => c.id === id))
+    )
+  }
 
 
 }
