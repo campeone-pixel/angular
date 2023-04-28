@@ -1,37 +1,40 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { Cursos } from '../models/cursos.models';
+import { BehaviorSubject, Observable, take } from 'rxjs';
+import { CrearCursoPayload, Cursos } from '../models/cursos.models';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CursosService {
-
   constructor() {}
 
   private cursos$ = new BehaviorSubject<Cursos[]>([
-    { id: 1, nombre: 'Angular', fecha_inicio: new Date(), fecha_fin:  new Date() },
-    { id: 2, nombre: 'React', fecha_inicio: new Date(), fecha_fin:  new Date()},
-    { id: 3, nombre: 'Vue',fecha_inicio: new Date(), fecha_fin:  new Date() }
-  ])
+    {
+      id: 1,
+      nombre: 'Angular',
+      fecha_inicio: new Date(),
+      fecha_fin: new Date(),
+    },
+    { id: 2, nombre: 'React', fecha_inicio: new Date(), fecha_fin: new Date() },
+    { id: 3, nombre: 'Vue', fecha_inicio: new Date(), fecha_fin: new Date() },
+  ]);
 
   getCursos(): Observable<Cursos[]> {
-   return this.cursos$.asObservable()
+    return this.cursos$.asObservable();
   }
 
-  addCurso() {
- 
+  addCurso(payload: CrearCursoPayload): Observable<Cursos[]> {
+    this.cursos$.pipe(take(1)).subscribe({
+      next: (cursos) => {
+        this.cursos$.next([...cursos, { id: cursos.length + 1, ...payload }]);
+      },
+    });
+    return this.cursos$.asObservable();
   }
 
-  deleteCurso() {
+  deleteCurso() {}
 
-  }
+  updateCurso() {}
 
-  updateCurso() {
-  }
-
-getCursoPorID(){
-
-}
-
+  getCursoPorID() {}
 }
