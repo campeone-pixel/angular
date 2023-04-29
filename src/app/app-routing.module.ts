@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AlumnosTablesComponent } from './dashboard/pages/alumnos/alumnos-tables.components';
 import { DetalleAlumnoComponent } from './dashboard/pages/alumnos/detalle-alumno/detalle-alumno.component';
 import { CursosComponent } from './dashboard/pages/cursos/cursos.component';
+import { DetalleCursoComponent } from './dashboard/pages/cursos/detalle-curso/detalle-curso.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
      
       { path: 'alumnos/:id', component: DetalleAlumnoComponent },
       { path: 'cursos', component: CursosComponent },
+      { path: 'cursos/:id', component: DetalleCursoComponent },
     ],
   },
 
