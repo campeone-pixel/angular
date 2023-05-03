@@ -51,7 +51,7 @@ export class EditarComponent implements OnInit {
 
   update() {
     if (this.registerForm.valid) {
-      console.log(this.registerForm.value)
+      
       const nuevoCurso = {
         nombre: this.registerForm.value.nombre,
         fecha_inicio: this.registerForm.value.fecha_inicio,

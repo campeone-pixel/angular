@@ -9,19 +9,30 @@
   </mat-form-field>
 
   <mat-form-field class="mb-3 w-100">
-    <mat-label class="form-label"
-      >Fecha fin</mat-label
-    >
-    <input matInput formControlName="fecha_fin" type="date" />
-  
+    <mat-label class="form-label">Fecha fin</mat-label>
+    <input matInput [matDatepicker]="picker1" formControlName="fecha_fin" />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle
+      matIconSuffix
+      [for]="picker1"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field class="mb-3 w-100">
-    <mat-label class="form-label"
-      >Fecha Inicio</mat-label
-    >
-    <input matInput formControlName="fecha_inicio" type="date"/>
-  
+    <mat-label class="form-label">Fecha Inicio</mat-label>
+
+    <input
+      matInput
+      [matDatepicker]="picker2"
+      formControlName="fecha_inicio"
+    />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle
+      matIconSuffix
+      [for]="picker2"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
   </mat-form-field>
 
 

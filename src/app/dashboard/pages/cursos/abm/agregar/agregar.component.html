@@ -1,29 +1,35 @@
 <form [formGroup]="registerForm">
-  
-  
   <mat-form-field class="mb-3 w-100">
-    <mat-label  class="form-label">Nombre</mat-label>
+    <mat-label class="form-label">Nombre</mat-label>
     <input matInput [formControl]="nombreControl" type="text" />
-
-
   </mat-form-field>
 
   <mat-form-field class="mb-3 w-100">
-    <mat-label class="form-label"
-      >Fecha fin</mat-label
-    >
-    <input matInput [formControl]="fechaFinControl" type="text" />
-  
+    <mat-label class="form-label">Fecha fin</mat-label>
+    <input matInput [matDatepicker]="picker1" [formControl]="fechaFinControl" />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle
+      matIconSuffix
+      [for]="picker1"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field class="mb-3 w-100">
-    <mat-label class="form-label"
-      >Fecha Inicio</mat-label
-    >
-    <input matInput [formControl]="fechaInicioControl" />
-  
-  </mat-form-field>
+    <mat-label class="form-label">Fecha Inicio</mat-label>
 
+    <input
+      matInput
+      [matDatepicker]="picker2"
+      [formControl]="fechaInicioControl"
+    />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle
+      matIconSuffix
+      [for]="picker2"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
 
   <div mat-dialog-action class="row w-100 d-flex gap-4">
     <button mat-button (click)="add()">Submit</button>

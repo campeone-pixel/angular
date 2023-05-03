@@ -15,6 +15,8 @@ import { AgregarComponent } from './abm/agregar/agregar.component';
 import { EditarComponent } from './abm/editar/editar.component';
 import { EliminarComponent } from './abm/eliminar/eliminar.component';
 import { DetalleCursoComponent } from './detalle-curso/detalle-curso.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { DetalleCursoComponent } from './detalle-curso/detalle-curso.component';
     MatTableModule,
     MatCheckboxModule,
     PipesModule,
+    MatDatepickerModule,
+    MatNativeDateModule, 
   ],
   exports: [CursosComponent],
 })
