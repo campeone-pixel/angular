@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatListModule } from '@angular/material/list';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
@@ -24,9 +24,9 @@ import { AuthModule } from '../auth/auth.module';
 import { MatCardModule } from '@angular/material/card';
 import { CursosModule } from './pages/cursos/cursos.module';
 import { CursosComponent } from './pages/cursos/cursos.component';
-import { DetalleAlumnoComponent } from './pages/alumnos/detalle-alumno/detalle-alumno.component';
 import { DetalleCursoComponent } from './pages/cursos/detalle-curso/detalle-curso.component';
-import { AlumnosTablesComponent } from './pages/alumnos/alumnos-tables.components';
+
+
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import { AlumnosTablesComponent } from './pages/alumnos/alumnos-tables.component
   providers: [SidenavTogglerService, AuthService],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
+
     MatToolbarModule,
     MatIconModule,
     ReactiveFormsModule,
@@ -56,11 +56,7 @@ import { AlumnosTablesComponent } from './pages/alumnos/alumnos-tables.component
     RouterModule.forChild([
       {
         path: 'alumnos',
-
-        children: [
-          { path: '', component: AlumnosTablesComponent },
-          { path: ':id', component: DetalleAlumnoComponent },
-        ],
+        loadChildren:()=> import("./pages/alumnos/alumnos-tables.module").then((m)=> m.AlumnosTablesModule)
       },
 
       {

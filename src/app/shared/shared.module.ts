@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatCardModule } from '@angular/material/card';
@@ -21,26 +20,10 @@ import { PatronIteradorComponent } from './patron-iterador/patron-iterador.compo
 import { SidenavTogglerService } from '../core/services/sidenav-toggler.service';
 import { AuthService } from '../core/services/auth.service';
 import { NotificationsService } from '../core/services/notifications.service';
-import { CardsComponent } from '../dashboard/pages/cards/cards.component';
 
 @NgModule({
-  declarations: [
-    
-    CardsComponent,
-    ButtonsAndIconsComponent,
-
- 
-    PatronIteradorComponent,
-
-  ],
-  exports: [
-    
-    CardsComponent,
-    ButtonsAndIconsComponent,
-   
-    PatronIteradorComponent,
- 
-  ],
+  declarations: [ButtonsAndIconsComponent, PatronIteradorComponent],
+  exports: [ButtonsAndIconsComponent, PatronIteradorComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -55,6 +38,6 @@ import { CardsComponent } from '../dashboard/pages/cards/cards.component';
     MatCheckboxModule,
     PipesModule,
   ],
-  providers: [SidenavTogglerService, AuthService,NotificationsService],
+  providers: [SidenavTogglerService, AuthService, NotificationsService],
 })
 export class SharedModule {}

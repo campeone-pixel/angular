@@ -8,9 +8,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
 
+import { RouterModule } from '@angular/router';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -24,12 +23,11 @@ import { AuthComponent } from './auth.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 
-
 @NgModule({
   declarations: [RegisterComponent, LoginComponent, AuthComponent],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
+
     MatToolbarModule,
     MatIconModule,
     ReactiveFormsModule,
@@ -39,7 +37,6 @@ import { RegisterComponent } from './pages/register/register.component';
 
     RouterModule,
     AlumnosTablesModule,
-    
 
     MatListModule,
 
@@ -48,7 +45,13 @@ import { RegisterComponent } from './pages/register/register.component';
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
-
+    RouterModule.forChild([
+      { path: 'login', component: LoginComponent },
+      {
+        path: 'register',
+        component: RegisterComponent,
+      },
+    ]),
     MatCheckboxModule,
     PipesModule,
   ],

@@ -19,13 +19,17 @@ import { DetalleAlumnoComponent } from './detalle-alumno/detalle-alumno.componen
 import { AgregarComponent } from './abm/agregar/agregar.component';
 import { EditarComponent } from './abm/editar/editar.component';
 import { EliminarComponent } from './abm/eliminar/eliminar.component';
-
-
-
-
+import { RouterModule } from '@angular/router';
+import { AlumnosRoutingModule } from './alumnos-routing.module';
 
 @NgModule({
-  declarations: [AlumnosTablesComponent,AgregarComponent,EliminarComponent,EditarComponent, DetalleAlumnoComponent],
+  declarations: [
+    AlumnosTablesComponent,
+    AgregarComponent,
+    EliminarComponent,
+    EditarComponent,
+    DetalleAlumnoComponent,
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -39,10 +43,9 @@ import { EliminarComponent } from './abm/eliminar/eliminar.component';
     MatTableModule,
     MatCheckboxModule,
     PipesModule,
+    AlumnosRoutingModule,
   ],
-  exports:[
-    AlumnosTablesComponent
-  ],
-  providers: [SidenavTogglerService, AuthService,NotificationsService],
+  exports: [AlumnosTablesComponent],
+  providers: [SidenavTogglerService, AuthService, NotificationsService],
 })
-export class AlumnosTablesModule { }
+export class AlumnosTablesModule {}

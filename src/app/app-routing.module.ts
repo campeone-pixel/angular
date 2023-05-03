@@ -6,7 +6,6 @@ import { LoginComponent } from './auth/pages/login/login.component';
 import { RegisterComponent } from './auth/pages/register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-
 const routes: Routes = [
   {
     path: 'dashboard',
@@ -18,13 +17,7 @@ const routes: Routes = [
   {
     path: 'auth',
     component: AuthComponent,
-    children: [
-      { path: 'login', component: LoginComponent },
-      {
-        path: 'register',
-        component: RegisterComponent,
-      },
-    ],
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   { path: '**', redirectTo: 'dashboard' },
 ];
