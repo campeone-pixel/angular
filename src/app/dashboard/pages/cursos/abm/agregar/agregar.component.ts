@@ -56,5 +56,7 @@ export class AgregarComponent {
     }
   }
 
-  onNoClick() {}
+   onNoClick(): void {
+    this.dialogRef.close();
+  }
 }

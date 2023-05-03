@@ -23,6 +23,10 @@ import { AlumnosTablesModule } from './pages/alumnos/alumnos-tables.module';
 import { AuthModule } from '../auth/auth.module';
 import { MatCardModule } from '@angular/material/card';
 import { CursosModule } from './pages/cursos/cursos.module';
+import { CursosComponent } from './pages/cursos/cursos.component';
+import { DetalleAlumnoComponent } from './pages/alumnos/detalle-alumno/detalle-alumno.component';
+import { DetalleCursoComponent } from './pages/cursos/detalle-curso/detalle-curso.component';
+import { AlumnosTablesComponent } from './pages/alumnos/alumnos-tables.components';
 
 @NgModule({
   declarations: [
@@ -43,12 +47,31 @@ import { CursosModule } from './pages/cursos/cursos.module';
     MatSidenavModule,
     MatTableModule,
     MatCardModule,
-    RouterModule,
+
     AlumnosTablesModule,
     AuthModule,
     CursosModule,
     MatListModule,
     MatCardModule,
+    RouterModule.forChild([
+      {
+        path: 'alumnos',
+
+        children: [
+          { path: '', component: AlumnosTablesComponent },
+          { path: ':id', component: DetalleAlumnoComponent },
+        ],
+      },
+
+      {
+        path: 'cursos',
+
+        children: [
+          { path: '', component: CursosComponent },
+          { path: ':id', component: DetalleCursoComponent },
+        ],
+      },
+    ]),
   ],
 })
 export class DashboardModule {}

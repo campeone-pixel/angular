@@ -7,26 +7,12 @@ import { RegisterComponent } from './auth/pages/register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 
-import { AlumnosTablesComponent } from './dashboard/pages/alumnos/alumnos-tables.components';
-import { DetalleAlumnoComponent } from './dashboard/pages/alumnos/detalle-alumno/detalle-alumno.component';
-import { CursosComponent } from './dashboard/pages/cursos/cursos.component';
-import { DetalleCursoComponent } from './dashboard/pages/cursos/detalle-curso/detalle-curso.component';
-
-
 const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    children: [
-      {
-        path: 'alumnos',
-        component: AlumnosTablesComponent,
-      },
-     
-      { path: 'alumnos/:id', component: DetalleAlumnoComponent },
-      { path: 'cursos', component: CursosComponent },
-      { path: 'cursos/:id', component: DetalleCursoComponent },
-    ],
+    loadChildren: () =>
+      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
   },
 
   {
@@ -40,8 +26,7 @@ const routes: Routes = [
       },
     ],
   },
-
-  { path: 'dashboard', redirectTo: 'dashboard/alumnos' },
+  { path: '**', redirectTo: 'dashboard' },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
