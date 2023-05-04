@@ -19,10 +19,11 @@ import { DashboardComponent } from './dashboard.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { ContenidoComponent } from './contenido/contenido.component';
-import { AlumnosTablesModule } from './pages/alumnos/alumnos-tables.module';
-import { AuthModule } from '../auth/auth.module';
+// import { AlumnosTablesModule } from './pages/alumnos/alumnos-tables.module';
+// import { AuthModule } from '../auth/auth.module';
 import { MatCardModule } from '@angular/material/card';
-import { CursosModule } from './pages/cursos/cursos.module';
+// import { CursosModule } from './pages/cursos/cursos.module';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 const routes: Routes = [
@@ -34,10 +35,10 @@ const routes: Routes = [
   {
     path: 'cursos',
     loadChildren:()=> import("./pages/cursos/cursos.module").then((m)=> {
-      
+
       return m.CursosModule})
 
-  
+
   },
 ]
 
@@ -48,8 +49,10 @@ const routes: Routes = [
     ToolbarComponent,
     DashboardComponent,
   ],
-  exports: [DashboardComponent],
-  providers: [SidenavTogglerService, AuthService],
+  // exports: [DashboardComponent],
+  // Estos providers tienen la configuracion provideIn: "root" dentro de su decorador @Injectable
+  // No hace falta colocarlos aqui
+  // providers: [SidenavTogglerService, AuthService],
   imports: [
     CommonModule,
 
@@ -61,9 +64,25 @@ const routes: Routes = [
     MatTableModule,
     MatCardModule,
 
-    AlumnosTablesModule,
-    AuthModule,
-    CursosModule,
+      /**
+     * Este import no deberia estar, por que al importar AlumnosTablesModule
+     * Estas trayendo todo lo que tiene dentro ese modulo, como por ejemplo las rutas hijas
+     * de ese modulo, lo cual rompe las rutas de ESTE modulo (DashboardModule)
+     */
+    // AlumnosTablesModule,
+    /**
+     * Este import no deberia estar, por que al importar AuthModule
+     * Estas trayendo todo lo que tiene dentro ese modulo, como por ejemplo las rutas hijas
+     * de ese modulo, lo cual rompe las rutas de ESTE modulo (DashboardModule)
+     */
+    // AuthModule,
+
+    /**
+     * Este import no deberia estar, por que al importar CursosModule
+     * Estas trayendo todo lo que tiene dentro ese modulo, como por ejemplo las rutas hijas
+     * de ese modulo, lo cual rompe las rutas de ESTE modulo (DashboardModule)
+     */
+    // CursosModule,
     MatListModule,
     MatCardModule,
     RouterModule.forChild(routes),

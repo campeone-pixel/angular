@@ -5,13 +5,19 @@ import { AppComponent } from './app.component';
 
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
-import { DashboardModule } from './dashboard/dashboard.module';
+// import { DashboardModule } from './dashboard/dashboard.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
-    DashboardModule,
+    MatDialogModule,
+    // Este import no deberia estar aca
+    // Porque el DashboardModule ya se esta cargando por lazy loading
+    // con la importacion de AppRoutingModule...
+    // lo que sucede al dejar ambos imports es que se duplica la declaracion de rutas
+    // DashboardModule,
     AppRoutingModule,
     BrowserAnimationsModule,
 

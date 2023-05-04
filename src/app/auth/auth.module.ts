@@ -45,8 +45,13 @@ const routes: Routes = [
     MatSidenavModule,
     MatTableModule,
 
-   
-    AlumnosTablesModule,
+
+    /**
+     * Este import no deberia estar, por que al importar AlumnosTablesModule
+     * Estas trayendo todo lo que tiene dentro ese modulo, como por ejemplo las rutas hijas
+     * de ese modulo, lo cual rompe las rutas de ESTE modulo (AuthModule)
+     */
+    // AlumnosTablesModule,
 
     MatListModule,
 
@@ -58,6 +63,6 @@ const routes: Routes = [
     MatCheckboxModule,
     PipesModule,
   ],
-  
+
 })
 export class AuthModule {}
