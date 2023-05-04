@@ -9,7 +9,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -23,10 +23,20 @@ import { AuthComponent } from './auth.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 
+const routes: Routes = [
+  { path: 'login', component: LoginComponent },
+      {
+        path: 'register',
+        component: RegisterComponent,
+      },
+]
+
+
 @NgModule({
   declarations: [RegisterComponent, LoginComponent, AuthComponent],
   imports: [
     CommonModule,
+    RouterModule.forChild(routes),
 
     MatToolbarModule,
     MatIconModule,
@@ -35,7 +45,7 @@ import { RegisterComponent } from './pages/register/register.component';
     MatSidenavModule,
     MatTableModule,
 
-    RouterModule,
+   
     AlumnosTablesModule,
 
     MatListModule,
@@ -45,16 +55,9 @@ import { RegisterComponent } from './pages/register/register.component';
     MatDialogModule,
     MatInputModule,
     MatFormFieldModule,
-    RouterModule.forChild([
-      { path: 'login', component: LoginComponent },
-      {
-        path: 'register',
-        component: RegisterComponent,
-      },
-    ]),
     MatCheckboxModule,
     PipesModule,
   ],
-  exports: [RegisterComponent, LoginComponent],
+  
 })
 export class AuthModule {}

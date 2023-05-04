@@ -19,7 +19,7 @@ import { DetalleAlumnoComponent } from './detalle-alumno/detalle-alumno.componen
 import { AgregarComponent } from './abm/agregar/agregar.component';
 import { EditarComponent } from './abm/editar/editar.component';
 import { EliminarComponent } from './abm/eliminar/eliminar.component';
-import { RouterModule } from '@angular/router';
+
 import { AlumnosRoutingModule } from './alumnos-routing.module';
 
 @NgModule({
