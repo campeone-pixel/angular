@@ -1,14 +1,20 @@
 import { Injectable, Pipe } from '@angular/core';
-import { Subject, BehaviorSubject, Observable, Observer, find, of } from 'rxjs';
+import { Subject, BehaviorSubject, Observable, Observer, find, of, map } from 'rxjs';
 import { User } from '../models';
+import { HttpClient } from '@angular/common/http';
+import { enviroments } from 'src/enviroments/enviroments';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+
+  constructor(private httpClient: HttpClient){
+
+  }
+
   listUser: Array<User> = [
-    new User(1, 'paula', 'paula', 'paula@mail.com', '12345'),
-    new User(2, 'mail', 'mailapellido', 'mail@mail.com', '12345'),
+
   ];
 
   private authUser$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
@@ -34,11 +40,40 @@ export class AuthService {
   }
 
   loginUser(email: string, password: string): Observable<User | null> {
-    const usuarioAutenticado = this.listUser.find(
-      (usuario) => usuario.mail === email && usuario.password === password
+    return this.httpClient.get<User[]>(`${enviroments.baseApiUrl}/usuarios`, {
+      params: {
+        email: email,
+        password: password
+      }
+    }).pipe(
+      map((usuarios:User[]) => {
+        const usuarioAutenticado = usuarios[0];
+        if (usuarioAutenticado) {
+          localStorage.setItem("token", usuarioAutenticado.token);
+          this.authUser$.next(usuarioAutenticado || null);
+          return usuarioAutenticado;
+        } else {
+          return null;
+        }
+      })
     );
-    this.authUser$.next(usuarioAutenticado || null);
-    return of(usuarioAutenticado || null);
+  }
+  
+
+  verificarToken(): Observable<User | null> {
+    const token = localStorage.getItem("token");
+    return this.httpClient.get<User[]>(`${enviroments.baseApiUrl}/usuario?token=${token}`).pipe(
+      map((usuarios) => {
+        const usuarioAutenticado = usuarios[0];
+        if (usuarioAutenticado) {
+          localStorage.setItem("token", usuarioAutenticado.token);
+          this.authUser$.next(usuarioAutenticado || null);
+          return usuarioAutenticado;
+        } else {
+          return null;
+        }
+      })
+    );
   }
 
   logout() {

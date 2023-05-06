@@ -1,3 +1,4 @@
 export const enviroments = {
-    isProduccion : false
+    isProduccion : false,
+    baseApiUrl:"http://localhost:3000"
 }

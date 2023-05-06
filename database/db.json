@@ -1,0 +1,51 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nombre": "matias",
+      "apellido": "poses",
+      "mail": "matias@mail.com",
+      "password": "123456",
+      "token": "asfdaosidhjfhgaojhggahgsdjfghjfghfg",
+      "role": "admin"
+    },
+    {
+      "id": 2,
+      "nombre": "josue",
+      "apellido": "josue",
+      "mail": "josue@mail.com",
+      "password": "123456",
+      "token": "asfdaosidhjfhgaojhggahgsdjfghjfghfg",
+      "role": "admin"
+    },
+    {
+      "id": 3,
+      "nombre": "mail",
+      "apellido": "mail",
+      "mail": "mail@mail.com",
+      "password": "12345",
+      "token": "sfdasdfgargdgfhdfgjfkhjoinmvbnmcvhbxd",
+      "role": "admin"
+    }
+  ],
+  "cursos": [
+    {
+      "id": 1,
+      "nombre": "Angular",
+      "fecha_inicio": "2023-05-06T00:13:53.322Z",
+      "fecha_fin": "2023-05-06T00:13:53.322Z"
+    },
+    {
+      "id": 2,
+      "nombre": "react",
+      "fecha_inicio": "2023-05-06T00:13:53.322Z",
+      "fecha_fin": "2023-05-06T00:13:53.322Z"
+    },
+    {
+      "id": 3,
+      "nombre": "vue",
+      "fecha_inicio": "2023-05-06T00:13:53.322Z",
+      "fecha_fin": "2023-05-06T00:13:53.322Z"
+    }
+  ]
+}

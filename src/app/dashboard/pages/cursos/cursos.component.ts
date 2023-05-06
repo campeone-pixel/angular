@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 
 import { CursosService } from 'src/app/core/services/cursos.service';
@@ -9,13 +9,14 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 import { Cursos } from 'src/app/core/models/cursos.models';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-cursos',
   templateUrl: './cursos.component.html',
   styles: [],
 })
-export class CursosComponent implements OnInit {
+export class CursosComponent implements OnInit,OnDestroy {
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = [
     'id',
@@ -25,16 +26,26 @@ export class CursosComponent implements OnInit {
     'action',
   ];
 
+  suscripcion: Subscription | undefined;
+
   constructor(
     private cursosService: CursosService,
     private dialogService: MatDialog,
 
     private router: Router
-  ) {}
+  ) {
+  
+  }
+  ngOnDestroy(): void {
+    this.suscripcion?.unsubscribe();
+  }
   ngOnInit(): void {
-    this.cursosService.getCursos().subscribe((e) => {
-      this.dataSource.data = e;
-    });
+    this.cursosService.getCursosAPI()
+    this.suscripcion =this.cursosService.getCursos().subscribe(
+      (cursos)=>{
+        this.dataSource.data = cursos;
+      }
+    )
   }
 
   actualizarLista(): void {

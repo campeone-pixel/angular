@@ -57,25 +57,25 @@ export class RegisterComponent implements OnDestroy {
     this.router.navigate(['dashboard', 'alumnos']);
   }
 
-  onSubmit() {
-    const usuarioAutenticado = new User(
-      this.authUser.idProximoUser(),
-      this.loginForm.value.nombre,
-      this.loginForm.value.apellido,
-      this.loginForm.value.mail,
-      this.loginForm.value.password
-    );
+  // onSubmit() {
+  //   const usuarioAutenticado = new User(
+  //     this.authUser.idProximoUser(),
+  //     this.loginForm.value.nombre,
+  //     this.loginForm.value.apellido,
+  //     this.loginForm.value.mail,
+  //     this.loginForm.value.password
+  //   );
 
-    this.authUser
-      .registerUser(usuarioAutenticado)
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe((usuario) => {
-        if (!usuario) {
-          this.mensaje.mostrarMensaje('Credenciales inválidas');
-        } else {
-          this.mensaje.mostrarMensaje('Registro exitoso');
-          this.router.navigate(['dashboard', 'alumnos']);
-        }
-      });
-  }
+  //   this.authUser
+  //     .registerUser(usuarioAutenticado)
+  //     .pipe(takeUntil(this.destroyed$))
+  //     .subscribe((usuario) => {
+  //       if (!usuario) {
+  //         this.mensaje.mostrarMensaje('Credenciales inválidas');
+  //       } else {
+  //         this.mensaje.mostrarMensaje('Registro exitoso');
+  //         this.router.navigate(['dashboard', 'alumnos']);
+  //       }
+  //     });
+  // }
 }

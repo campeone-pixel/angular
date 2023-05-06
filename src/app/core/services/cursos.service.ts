@@ -1,26 +1,31 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, find, map, Observable, take } from 'rxjs';
 import { CrearCursoPayload, Cursos } from '../models/cursos.models';
+import { enviroments } from 'src/enviroments/enviroments';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CursosService {
-  constructor() {}
+  constructor(private httpClient: HttpClient) {}
 
   private cursos$ = new BehaviorSubject<Cursos[]>([
-    {
-      id: 1,
-      nombre: 'Angular',
-      fecha_inicio: new Date(),
-      fecha_fin: new Date(),
-    },
-    { id: 2, nombre: 'React', fecha_inicio: new Date(), fecha_fin: new Date() },
-    { id: 3, nombre: 'Vue', fecha_inicio: new Date(), fecha_fin: new Date() },
+
   ]);
 
   getCursos(): Observable<Cursos[]> {
     return this.cursos$.asObservable();
+  }
+
+  getCursosAPI(): void {
+    this.httpClient.get<Cursos[]>(`${enviroments.baseApiUrl}/cursos`).subscribe(
+      {
+        next: (cursos:Cursos[])=>{
+          this.cursos$.next(cursos)
+        }
+      }
+    )
   }
 
   addCurso(payload: CrearCursoPayload): Observable<Cursos[]> {
