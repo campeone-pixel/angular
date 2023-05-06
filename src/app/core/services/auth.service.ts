@@ -12,12 +12,13 @@ import {
 import { User } from '../models';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { enviroments } from 'src/enviroments/enviroments';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private router: Router) {}
 
   listUser: Array<User> = [];
 
@@ -68,10 +69,9 @@ export class AuthService {
   verificarToken(): Observable<boolean> {
     const token = localStorage.getItem('token');
     return this.httpClient
-      .get<User[]>(`${enviroments.baseApiUrl}/usuarios?token=${token}`,
-      {
+      .get<User[]>(`${enviroments.baseApiUrl}/usuarios?token=${token}`, {
         headers: new HttpHeaders({
-          'Authorization': token || '',
+          Authorization: token || '',
         }),
       })
       .pipe(
@@ -83,13 +83,15 @@ export class AuthService {
           }
           return !!usuarioAutenticado;
         }),
-        catchError((err)=>{
-          return of(false)
+        catchError((err) => {
+          return of(false);
         })
       );
   }
 
   logout() {
     this.authUser$.next(null);
+    localStorage.removeItem('token');
+    this.router.navigate(['auth', 'login']);
   }
 }

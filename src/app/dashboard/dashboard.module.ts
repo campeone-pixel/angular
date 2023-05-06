@@ -24,6 +24,8 @@ import { ContenidoComponent } from './contenido/contenido.component';
 import { MatCardModule } from '@angular/material/card';
 // import { CursosModule } from './pages/cursos/cursos.module';
 import { MatDialogModule } from '@angular/material/dialog';
+import { AdminGuard } from '../auth/guards/admin.guard';
+
 
 
 const routes: Routes = [
@@ -34,6 +36,7 @@ const routes: Routes = [
 
   {
     path: 'cursos',
+    canActivate:[AdminGuard],
     loadChildren:()=> import("./pages/cursos/cursos.module").then((m)=> {
 
       return m.CursosModule})

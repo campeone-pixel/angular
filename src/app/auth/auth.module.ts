@@ -22,15 +22,15 @@ import { AlumnosTablesModule } from '../dashboard/pages/alumnos/alumnos-tables.m
 import { AuthComponent } from './auth.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-      {
-        path: 'register',
-        component: RegisterComponent,
-      },
-]
-
+  { path: 'login', canActivate:[LoginGuard], component: LoginComponent },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
+];
 
 @NgModule({
   declarations: [RegisterComponent, LoginComponent, AuthComponent],
@@ -44,7 +44,6 @@ const routes: Routes = [
     MatButtonModule,
     MatSidenavModule,
     MatTableModule,
-
 
     /**
      * Este import no deberia estar, por que al importar AlumnosTablesModule
@@ -63,6 +62,5 @@ const routes: Routes = [
     MatCheckboxModule,
     PipesModule,
   ],
-
 })
 export class AuthModule {}

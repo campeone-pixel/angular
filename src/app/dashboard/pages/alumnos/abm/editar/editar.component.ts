@@ -63,7 +63,7 @@ export class EditarComponent {
       );
       this.alumnosService.update(updatedAlumno);
 
-      this.notification.mostrarMensaje('el usuario se creo correctamente');
+      this.notification.mostrarMensaje('el usuario se edito correctamente');
       this.dialogRef.close();
     } else {
       alert('no es valido');
