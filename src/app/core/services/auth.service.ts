@@ -1,21 +1,25 @@
 import { Injectable, Pipe } from '@angular/core';
-import { Subject, BehaviorSubject, Observable, Observer, find, of, map } from 'rxjs';
+import {
+  Subject,
+  BehaviorSubject,
+  Observable,
+  Observer,
+  find,
+  of,
+  map,
+  catchError,
+} from 'rxjs';
 import { User } from '../models';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { enviroments } from 'src/enviroments/enviroments';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  constructor(private httpClient: HttpClient) {}
 
-  constructor(private httpClient: HttpClient){
-
-  }
-
-  listUser: Array<User> = [
-
-  ];
+  listUser: Array<User> = [];
 
   private authUser$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
@@ -40,40 +44,49 @@ export class AuthService {
   }
 
   loginUser(email: string, password: string): Observable<User | null> {
-    return this.httpClient.get<User[]>(`${enviroments.baseApiUrl}/usuarios`, {
-      params: {
-        email: email,
-        password: password
-      }
-    }).pipe(
-      map((usuarios:User[]) => {
-        const usuarioAutenticado = usuarios[0];
-        if (usuarioAutenticado) {
-          localStorage.setItem("token", usuarioAutenticado.token);
-          this.authUser$.next(usuarioAutenticado || null);
-          return usuarioAutenticado;
-        } else {
-          return null;
-        }
+    return this.httpClient
+      .get<User[]>(`${enviroments.baseApiUrl}/usuarios`, {
+        params: {
+          email: email,
+          password: password,
+        },
       })
-    );
+      .pipe(
+        map((usuarios: User[]) => {
+          const usuarioAutenticado = usuarios[0];
+          if (usuarioAutenticado) {
+            localStorage.setItem('token', usuarioAutenticado.token);
+            this.authUser$.next(usuarioAutenticado || null);
+            return usuarioAutenticado;
+          } else {
+            return null;
+          }
+        })
+      );
   }
-  
 
-  verificarToken(): Observable<User | null> {
-    const token = localStorage.getItem("token");
-    return this.httpClient.get<User[]>(`${enviroments.baseApiUrl}/usuario?token=${token}`).pipe(
-      map((usuarios) => {
-        const usuarioAutenticado = usuarios[0];
-        if (usuarioAutenticado) {
-          localStorage.setItem("token", usuarioAutenticado.token);
-          this.authUser$.next(usuarioAutenticado || null);
-          return usuarioAutenticado;
-        } else {
-          return null;
-        }
+  verificarToken(): Observable<boolean> {
+    const token = localStorage.getItem('token');
+    return this.httpClient
+      .get<User[]>(`${enviroments.baseApiUrl}/usuarios?token=${token}`,
+      {
+        headers: new HttpHeaders({
+          'Authorization': token || '',
+        }),
       })
-    );
+      .pipe(
+        map((usuarios) => {
+          const usuarioAutenticado = usuarios[0];
+          if (usuarioAutenticado) {
+            localStorage.setItem('token', usuarioAutenticado.token);
+            this.authUser$.next(usuarioAutenticado);
+          }
+          return !!usuarioAutenticado;
+        }),
+        catchError((err)=>{
+          return of(false)
+        })
+      );
   }
 
   logout() {
