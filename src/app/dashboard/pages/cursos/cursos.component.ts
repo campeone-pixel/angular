@@ -16,7 +16,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './cursos.component.html',
   styles: [],
 })
-export class CursosComponent implements OnInit,OnDestroy {
+export class CursosComponent implements OnDestroy {
   dataSource = new MatTableDataSource();
   displayedColumns: string[] = [
     'id',
@@ -34,23 +34,21 @@ export class CursosComponent implements OnInit,OnDestroy {
 
     private router: Router
   ) {
-  
+    this.actualizarLista()
+    console.log(this.dataSource.data)
   }
+
+
   ngOnDestroy(): void {
     this.suscripcion?.unsubscribe();
   }
-  ngOnInit(): void {
-    this.cursosService.getCursosAPI()
-    this.suscripcion =this.cursosService.getCursos().subscribe(
-      (cursos)=>{
-        this.dataSource.data = cursos;
-      }
-    )
-  }
+
 
   actualizarLista(): void {
+    this.cursosService.getCursosAPI()
     this.cursosService.getCursos().subscribe((cursos) => {
       this.dataSource.data = cursos;
+      console.log(cursos)
     });
   }
 
