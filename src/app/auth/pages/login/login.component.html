@@ -5,12 +5,15 @@
       
       <mat-card-content class="grid">
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+
           <mat-form-field class="col-12">
             <input
               matInput
               formControlName="mail"
               placeholder="Correo electrónico"
             />
+            <mat-error *ngFor="let error of mailControl.errors | keyvalue">{{ error | controlErrorsMessage }}</mat-error>
           </mat-form-field>
 
           <mat-form-field class="col-12">
@@ -20,6 +23,7 @@
               formControlName="password"
               placeholder="password"
             />
+            <mat-error *ngFor="let error of passwordControl.errors | keyvalue">{{ error | controlErrorsMessage }}</mat-error>
           </mat-form-field>
 
         </form>

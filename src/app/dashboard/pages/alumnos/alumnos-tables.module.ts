@@ -15,12 +15,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 import { AlumnosTablesComponent } from './alumnos-tables.components';
-import { DetalleAlumnoComponent } from './detalle-alumno/detalle-alumno.component';
+
 import { AgregarComponent } from './abm/agregar/agregar.component';
 import { EditarComponent } from './abm/editar/editar.component';
 import { EliminarComponent } from './abm/eliminar/eliminar.component';
 
 import { AlumnosRoutingModule } from './alumnos-routing.module';
+import { DetalleAlumnoComponent } from './detalle-alumno/detalle-alumno.component';
 
 @NgModule({
   declarations: [

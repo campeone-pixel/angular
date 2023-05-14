@@ -8,9 +8,10 @@ import {
 
 import { Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
-
+ 
 import { AuthService } from 'src/app/core/services/auth.service';
 import { NotificationsService } from 'src/app/core/services/notifications.service';
+
 
 @Component({
   selector: 'app-login',
@@ -37,6 +38,8 @@ export class LoginComponent implements OnDestroy {
       mail: this.mailControl,
       password: this.passwordControl,
     });
+
+    
   }
   ngOnDestroy(): void {
     this.destroyed$.next();
@@ -46,17 +49,16 @@ export class LoginComponent implements OnDestroy {
     this.router.navigate(['dashboard', 'alumnos']);
   }
 
-  onSubmit() {
-    this.authUser
-      .loginUser(this.loginForm.value.mail, this.loginForm.value.password)
-      .pipe(takeUntil(this.destroyed$))
-      .subscribe((usuario) => {
-        if (!usuario) {
-          this.mensaje.mostrarMensaje('Credenciales inválidas');
-        } else {
-          this.mensaje.mostrarMensaje('el usuario se logueo');
-          this.router.navigate(['dashboard', 'alumnos']);
-        }
-      });
+  onSubmit(): void {
+    if (this.loginForm.invalid) {
+      
+      this.loginForm.markAllAsTouched();
+      alert("Por favor suministra los datos correctos")
+    } else {
+      this.authUser.loginUser(
+        this.loginForm.value.mail,
+        this.loginForm.value.password
+      );
+    }
   }
 }

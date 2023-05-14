@@ -44,26 +44,27 @@ export class AuthService {
     return of(user);
   }
 
-  loginUser(email: string, password: string): Observable<User | null> {
-    return this.httpClient
+  loginUser(email: string, password: string): void {
+     this.httpClient
       .get<User[]>(`${enviroments.baseApiUrl}/usuarios`, {
         params: {
           email: email,
           password: password,
         },
       })
-      .pipe(
-        map((usuarios: User[]) => {
-          const usuarioAutenticado = usuarios[0];
-          if (usuarioAutenticado) {
-            localStorage.setItem('token', usuarioAutenticado.token);
-            this.authUser$.next(usuarioAutenticado || null);
-            return usuarioAutenticado;
-          } else {
-            return null;
-          }
-        })
-      );
+     .subscribe({
+      next: (usuarios) => {
+        const usuarioAutenticado = usuarios[0];
+        if (usuarioAutenticado) {
+          localStorage.setItem('token', usuarioAutenticado.token)
+          this.authUser$.next(usuarioAutenticado || null);
+          alert('¡Usuario logueado!')
+          this.router.navigate(['dashboard']);
+        } else {
+          alert('¡Usuario y contraseña incorrectos!')
+        }
+      }
+    });
   }
 
   verificarToken(): Observable<boolean> {

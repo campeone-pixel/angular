@@ -16,14 +16,15 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { PipesModule } from '../pipes/pipes.module';
 
-import { AlumnosTablesModule } from '../dashboard/pages/alumnos/alumnos-tables.module';
+
+
 import { AuthComponent } from './auth.component';
-import { LoginComponent } from './pages/login/login.component';
+
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginGuard } from './guards/login.guard';
-
+import { PipesModule } from 'src/app/pipes/pipes.module';
+import { LoginComponent } from './pages/login/login.component';
 const routes: Routes = [
   { path: 'login', canActivate:[LoginGuard], component: LoginComponent },
   {
@@ -44,7 +45,7 @@ const routes: Routes = [
     MatButtonModule,
     MatSidenavModule,
     MatTableModule,
-
+   
     /**
      * Este import no deberia estar, por que al importar AlumnosTablesModule
      * Estas trayendo todo lo que tiene dentro ese modulo, como por ejemplo las rutas hijas
