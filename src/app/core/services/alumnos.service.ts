@@ -1,117 +1,39 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Alumnos } from '../models/alumnos.model';
+import { enviroments } from 'src/enviroments/enviroments';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AlumnosService {
-  constructor() {}
+ 
 
-  listaAlumnos: Array<Alumnos> = [
-    new Alumnos(
-      1,
-      'paula',
-      'paula',
-      'paula@mail.com',
-
-      true,
-      false
-    ),
-    new Alumnos(
-      2,
-      'matias',
-      'poses',
-      'poses@mail.com',
-
-      false,
-      false
-    ),
-
-    new Alumnos(
-      3,
-      'carlos',
-      'pero',
-      'pero@mail.com',
-
-      false,
-      false
-    ),
-    new Alumnos(
-      4,
-      'miguel',
-      'miguel',
-      'miguel@mail.com',
-
-      true,
-      false
-    ),
-    new Alumnos(
-      5,
-      'mirta',
-      'perez',
-      'perez@mail.com',
-
-      true,
-      false
-    ),
-    new Alumnos(
-      6,
-      'gabriel',
-      'gabe',
-      'gabe@mail.com',
-
-      false,
-      false
-    ),
-    new Alumnos(
-      7,
-      'lisan',
-      'lisna',
-      'lisan@mail.com',
-
-      true,
-      false
-    ),
-  ];
+  constructor(private http: HttpClient) {}
 
   getAlumnos(): Observable<Alumnos[]> {
-    return new Observable<Alumnos[]>((observer) => {
-      observer.next(this.listaAlumnos);
-      observer.complete();
-    });
+    return this.http.get<Alumnos[]>(`${enviroments.baseApiUrl}/alumnos`);
   }
 
   add(alumno: any) {
-    this.listaAlumnos.push(alumno);
+    this.http.post(`${enviroments.baseApiUrl}/alumnos`, alumno).subscribe();
   }
 
   delete(alumno: Alumnos | undefined) {
-    const index = this.listaAlumnos.findIndex((elemento) => {
-      return elemento.id === alumno?.id;
-    });
-
-    this.listaAlumnos.splice(index, 1);
+    const url = `${enviroments.baseApiUrl}/alumnos/${alumno?.id}`;
+    this.http.delete(url).subscribe();
   }
 
   update(updatedAlumno: any) {
-    const index = this.listaAlumnos.findIndex(
-      (elemento) => elemento.id === updatedAlumno?.id
-    );
-
-    this.listaAlumnos[index] = updatedAlumno;
+    const url = `${enviroments.baseApiUrl}/alumnos/${updatedAlumno?.id}`;
+    this.http.put(url, updatedAlumno).subscribe();
   }
 
-obtenerAlumnoPorID(id:number): Alumnos | undefined{
-
-  const personaConId = this.listaAlumnos.find((e) => e.id === id);
-
-  return personaConId
-
-
-}
-
-
+  obtenerAlumnoPorID(id: number): Observable<Alumnos> {
+    const url = `${enviroments.baseApiUrl}/alumnos/${id}`;
+    return this.http.get<Alumnos>(url);
+  }
 }
 
 

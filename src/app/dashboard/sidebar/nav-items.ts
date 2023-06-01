@@ -1,20 +1,21 @@
 interface NavItem {
-    path: string,
-    title: string,
-    icon?:string
+  path: string;
+  title: string;
+  icon?: string;
 }
 
+const links: NavItem[] = [
+  { path: 'alumnos', title: 'Estudiantes', icon: 'person' },
+  {
+    path: 'cursos',
+    title: 'Cursos',
+    icon: 'school',
+  },
+  {
+    path: 'usuarios',
+    title: 'Usuarios',
+    icon: 'manage_accounts',
+  },
+];
 
-const links : NavItem[]= [
-    {path:'alumnos',
-title:"Estudiantes",
-icon:'person' },
-{
-    path:'cursos',
-    title:"Cursos",
-    icon:"school"
-}
-]
-
-
-export default links
+export default links;

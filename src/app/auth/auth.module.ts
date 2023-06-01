@@ -17,8 +17,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-
-
 import { AuthComponent } from './auth.component';
 
 import { RegisterComponent } from './pages/register/register.component';
@@ -26,7 +24,7 @@ import { LoginGuard } from './guards/login.guard';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 import { LoginComponent } from './pages/login/login.component';
 const routes: Routes = [
-  { path: 'login', canActivate:[LoginGuard], component: LoginComponent },
+  { path: 'login', canActivate: [LoginGuard], component: LoginComponent },
   {
     path: 'register',
     component: RegisterComponent,
@@ -45,13 +43,6 @@ const routes: Routes = [
     MatButtonModule,
     MatSidenavModule,
     MatTableModule,
-   
-    /**
-     * Este import no deberia estar, por que al importar AlumnosTablesModule
-     * Estas trayendo todo lo que tiene dentro ese modulo, como por ejemplo las rutas hijas
-     * de ese modulo, lo cual rompe las rutas de ESTE modulo (AuthModule)
-     */
-    // AlumnosTablesModule,
 
     MatListModule,
 

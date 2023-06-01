@@ -35,6 +35,8 @@ export class EditarComponent implements OnInit {
       nombre: new FormControl('', [Validators.required, Validators.minLength(3)]),
       fecha_inicio: new FormControl('', [Validators.required]),
       fecha_fin: new FormControl('', [Validators.required]),
+      diasCursar: new FormControl('', [Validators.required]),
+      horario: new FormControl('', [Validators.required]),
     
     });
     console.log(this.registerForm.value)
@@ -45,20 +47,25 @@ export class EditarComponent implements OnInit {
     this.registerForm.patchValue({
       nombre: this.data.nombre,
       fecha_inicio: this.data.fecha_inicio,
-      fecha_fin: this.data.fecha_fin
+      fecha_fin: this.data.fecha_fin,
+      diasCursar: this.data.diasCursar,
+      horario: this.data.horario
     })
     }
 
   update() {
     if (this.registerForm.valid) {
       
-      const nuevoCurso = {
+      const editado: Cursos = {
+        id: this.data.id,
         nombre: this.registerForm.value.nombre,
         fecha_inicio: this.registerForm.value.fecha_inicio,
         fecha_fin: this.registerForm.value.fecha_fin,
+        diasCursar: this.registerForm.value.diasCursar,
+        horario: this.registerForm.value.horario
       };
       
-      this.cursoService.updateCurso(nuevoCurso, this.data.id);
+      this.cursoService.update(editado );
 
       this.notification.mostrarMensaje('se realizo la edicion del curso');
       this.dialogRef.close();

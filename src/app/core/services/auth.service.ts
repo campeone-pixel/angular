@@ -8,6 +8,8 @@ import {
   of,
   map,
   catchError,
+  filter,
+  tap,
 } from 'rxjs';
 import { User } from '../models';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -18,11 +20,21 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private httpClient: HttpClient, private router: Router) {}
+  constructor(private httpClient: HttpClient, private router: Router) {
+    this.verificarToken();
+  }
 
   listUser: Array<User> = [];
 
-  private authUser$: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  private authUser$: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
+
+
+  esAdmin(): Observable<boolean> {
+    return this.authUser$.pipe(
+      filter((usuario) => usuario !== null),
+      map((usuario) => !!usuario && usuario.role === 'admin')
+    );
+  }
 
   getUserList(): Observable<User[]> {
     return new Observable<User[]>((observer) => {
@@ -45,26 +57,27 @@ export class AuthService {
   }
 
   loginUser(email: string, password: string): void {
-     this.httpClient
+    this.httpClient
       .get<User[]>(`${enviroments.baseApiUrl}/usuarios`, {
         params: {
           email: email,
           password: password,
         },
       })
-     .subscribe({
-      next: (usuarios) => {
-        const usuarioAutenticado = usuarios[0];
-        if (usuarioAutenticado) {
-          localStorage.setItem('token', usuarioAutenticado.token)
-          this.authUser$.next(usuarioAutenticado || null);
-          alert('¡Usuario logueado!')
-          this.router.navigate(['dashboard']);
-        } else {
-          alert('¡Usuario y contraseña incorrectos!')
-        }
-      }
-    });
+      .pipe(
+        tap((usuarios) => {
+          const user = usuarios.find((u) => u.mail === email && u.password === password);
+          if (user) {
+            localStorage.setItem('token', user.token);
+            this.authUser$.next(user || null);
+            alert('¡Usuario logueado!');
+            this.router.navigate(['dashboard']);
+          } else {
+            alert('¡Usuario y contraseña incorrectos!');
+          }
+        })
+      )
+      .subscribe();
   }
 
   verificarToken(): Observable<boolean> {

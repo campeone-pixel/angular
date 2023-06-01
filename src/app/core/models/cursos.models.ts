@@ -1,14 +1,11 @@
-export class Cursos {
-  constructor(
-    public id: number,
-    public nombre: string,
-    public fecha_inicio: Date,
-    public fecha_fin: Date
-  ) {}
-}
+import { User } from "./user.model";
 
-export interface CrearCursoPayload {
+export interface Cursos {
+  id?: number;
   nombre: string;
   fecha_inicio: Date;
   fecha_fin: Date;
+  diasCursar: string;
+  horario: string;
 }
+

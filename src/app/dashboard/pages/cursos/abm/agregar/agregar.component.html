@@ -31,6 +31,16 @@
     <mat-datepicker #picker2></mat-datepicker>
   </mat-form-field>
 
+  <mat-form-field class="mb-3 w-100">
+    <mat-label class="form-label">Nombre</mat-label>
+    <input matInput [formControl]="nombreControl" type="text" />
+  </mat-form-field>
+
+  <mat-form-field class="mb-3 w-100">
+    <mat-label class="form-label">Nombre</mat-label>
+    <input matInput [formControl]="nombreControl" type="text" />
+  </mat-form-field>
+
   <div mat-dialog-action class="row w-100 d-flex gap-4">
     <button mat-button (click)="add()">Submit</button>
     <button mat-button (click)="onNoClick()">Cancelar</button>

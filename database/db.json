@@ -26,12 +26,21 @@
       "password": "12345",
       "token": "sfdasdfgargdgfhdfgjfkhjoinmvbnmcvhbxd",
       "role": "admin"
+    },
+    {
+      "id": 4,
+      "nombre": "juan",
+      "apellido": "juanse",
+      "mail": "juan@mail.com",
+      "password": "12345",
+      "token": "sdfgdfgsdfyhsrjgfyjvghjkhjluoxdftgfhfdhj",
+      "role": "user"
     }
   ],
   "cursos": [
     {
       "id": 1,
-      "nombre": "Angular",
+      "nombre": "Angulargfhfhg",
       "fecha_inicio": "2023-05-06T00:13:53.322Z",
       "fecha_fin": "2023-05-06T00:13:53.322Z"
     },
@@ -39,13 +48,46 @@
       "id": 2,
       "nombre": "react",
       "fecha_inicio": "2023-05-06T00:13:53.322Z",
-      "fecha_fin": "2023-05-06T00:13:53.322Z"
+      "fecha_fin": "2023-05-06T00:13:53.322Z",
+      "estudiantes": []
     },
     {
       "id": 3,
       "nombre": "vue",
       "fecha_inicio": "2023-05-06T00:13:53.322Z",
-      "fecha_fin": "2023-05-06T00:13:53.322Z"
+      "fecha_fin": "2023-05-06T00:13:53.322Z",
+      "estudiantes": []
+    }
+  ],
+  "alumnos": [
+    {
+      "nombre": "nombre",
+      "apellido": "apellido",
+      "mail": "mail@mail.com",
+      "mejorAlumno": false,
+      "id": 1
+    },
+    {
+      "nombre": "nombre",
+      "apellido": "apellido",
+      "mail": "mail@mail.com",
+      "mejorAlumno": false,
+      "id": 2
+    },
+    {
+      "nombre": "nombre",
+      "apellido": "apellido",
+      "mail": "mail@mail.com",
+      "mejorAlumno": false,
+      "id": 3
+    },
+    {
+      "id": 4,
+      "nombre": "nombreasdfgsdfsdf",
+      "apellido": "apellido",
+      "mail": "mail@mail.com",
+      "mejorAlumno": false,
+      "eliminado": false
     }
   ]
 }

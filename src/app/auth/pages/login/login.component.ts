@@ -22,11 +22,11 @@ export class LoginComponent implements OnDestroy {
   loginForm: FormGroup = new FormGroup({});
   destroyed$ = new Subject<void>();
 
-  mailControl = new FormControl('mail@mail.com', [
+  mailControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
-  passwordControl = new FormControl('12345', [Validators.required]);
+  passwordControl = new FormControl('', [Validators.required]);
 
   constructor(
     private formBuilder: FormBuilder,

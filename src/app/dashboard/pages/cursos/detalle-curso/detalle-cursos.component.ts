@@ -6,8 +6,8 @@ import { Cursos } from 'src/app/core/models/cursos.models';
 import { CursosService } from 'src/app/core/services/cursos.service';
 
 @Component({
-  selector: 'app-detalle-curso',
-  templateUrl: './detalle-curso.component.html',
+  selector: 'app-detalle-cursos',
+  templateUrl: './detalle-cursos.component.html',
   styles: [
   ]
 })

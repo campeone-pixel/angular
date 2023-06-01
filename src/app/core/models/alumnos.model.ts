@@ -1,18 +1,9 @@
-export class Alumnos {
-  constructor(
-    public id: number,
-    public nombre: string,
-    public apellido: string,
-    public mail:string,
-    public mejorAlumno: boolean,
-    public eliminado: boolean,
-
-  
-  ) {}
-
-  cambiarMejorAlumno(ev:any){
-    console.log(ev)
-    this.mejorAlumno = !this.mejorAlumno
-  }
+export interface Alumnos {
+  id?: number;
+  cursosID?: number;
+  nombre: string;
+  apellido: string;
+  mail: string;
+  mejorAlumno: boolean;
+  eliminado: boolean;
 }
-

@@ -48,10 +48,10 @@
               <button mat-button (click)="verCurso(element.id)">
                 <mat-icon color="accent"> visibility </mat-icon>
               </button>
-              <button mat-button (click)="editarCurso(element)">
+              <button mat-button *ngIf="mostrarBotones" (click)="editarCurso(element)">
                 <mat-icon color="accent"> edit </mat-icon>
               </button>
-              <button mat-button (click)="eliminarCurso(element)">
+              <button mat-button *ngIf="mostrarBotones" (click)="eliminarCurso(element)">
                 <mat-icon color="accent"> delete_outline </mat-icon>
               </button>
             </div>

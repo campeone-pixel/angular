@@ -12,17 +12,13 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 
-
-
 import { CursosComponent } from './cursos.component';
 import { PipesModule } from 'src/app/pipes/pipes.module';
 import { AgregarComponent } from './abm/agregar/agregar.component';
 import { EditarComponent } from './abm/editar/editar.component';
 import { EliminarComponent } from './abm/eliminar/eliminar.component';
-import { DetalleCursoComponent } from './detalle-curso/detalle-curso.component';
+
 import { CursosRoutingModule } from './cursos-routing.module';
-
-
 
 @NgModule({
   declarations: [
@@ -30,7 +26,7 @@ import { CursosRoutingModule } from './cursos-routing.module';
     AgregarComponent,
     EliminarComponent,
     EditarComponent,
-    DetalleCursoComponent,
+    CursosComponent,
   ],
   imports: [
     CommonModule,
@@ -49,7 +45,6 @@ import { CursosRoutingModule } from './cursos-routing.module';
     MatDatepickerModule,
     MatNativeDateModule,
     CursosRoutingModule,
-   
   ],
   exports: [CursosComponent],
 })

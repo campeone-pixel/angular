@@ -6,9 +6,11 @@ import {
   FormControl,
 } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Alumnos } from 'src/app/core/models/alumnos.model';
+import { User } from 'src/app/core/models';
+
 import { AlumnosService } from 'src/app/core/services/alumnos.service';
 import { NotificationsService } from 'src/app/core/services/notifications.service';
+import { UsuariosService } from 'src/app/core/services/usuarios.service';
 @Component({
   selector: 'app-agregar',
   templateUrl: './agregar.component.html',
@@ -31,33 +33,49 @@ export class AgregarComponent {
     Validators.email,
   ]);
 
-  mejorAlumnoControl = new FormControl(false);
+  passwordControl = new FormControl('password', [
+    Validators.required,
+    Validators.minLength(5),
+  ]);
+  tokenControl = new FormControl('token', [
+    Validators.required,
+    Validators.minLength(5),
+  ]);
+  roleControl = new FormControl('role', [
+    Validators.required,
+    Validators.minLength(5),
+  ]);
+
+
 
   constructor(
     public formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AgregarComponent>,
     private notification: NotificationsService,
-    private alumnosService: AlumnosService
+    private usuarioService: UsuariosService
   ) {
     this.registerForm = this.formBuilder.group({
       nombre: this.nombreControl,
       apellido: this.apellidoControl,
       mail: this.mailControl,
-      mejorAlumno: this.mejorAlumnoControl,
+      password: this.passwordControl,
+      token:this.tokenControl,
+      role:this.roleControl
     });
   }
 
   add(): void {
     if (this.registerForm.valid) {
      
-      const nuevoAlumno: Alumnos = {
+      const nuevoAlumno: User = {
         nombre:this.registerForm.value.nombre,
         apellido:this.registerForm.value.apellido ,
         mail: this.registerForm.value.mail,
-        mejorAlumno: this.registerForm.value.mejorAlumno,
-        eliminado: this.registerForm.value.eliminado,
+        password: this.registerForm.value.password,
+        token:this.registerForm.value.token,
+        role:this.registerForm.value.role
       };
-      this.alumnosService.add(nuevoAlumno);
+      this.usuarioService.add(nuevoAlumno);
 
       this.notification.mostrarMensaje('el usuario se creo correctamente');
       this.dialogRef.close();

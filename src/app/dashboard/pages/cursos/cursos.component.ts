@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 
 import { Cursos } from 'src/app/core/models/cursos.models';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { User } from 'src/app/core/models';
 
 @Component({
   selector: 'app-cursos',
@@ -25,30 +27,32 @@ export class CursosComponent implements OnDestroy {
     'fecha_fin',
     'action',
   ];
-
   suscripcion: Subscription | undefined;
+  userAuth: User | null = null;
+  public mostrarBotones: boolean = false;
 
   constructor(
     private cursosService: CursosService,
     private dialogService: MatDialog,
-
+    private authService: AuthService,
     private router: Router
   ) {
-    this.actualizarLista()
-    console.log(this.dataSource.data)
+    this.actualizarLista();
   }
 
+  ngOnInit(): void {
+    this.authService.esAdmin().subscribe((esAdmin) => {
+      this.mostrarBotones = esAdmin;
+    });
+  }
 
   ngOnDestroy(): void {
     this.suscripcion?.unsubscribe();
   }
 
-
   actualizarLista(): void {
-    this.cursosService.getCursosAPI()
     this.cursosService.getCursos().subscribe((cursos) => {
       this.dataSource.data = cursos;
-      console.log(cursos)
     });
   }
 

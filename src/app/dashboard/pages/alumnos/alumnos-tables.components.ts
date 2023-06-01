@@ -1,34 +1,39 @@
-
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { Alumnos } from 'src/app/core/models';
-
-
+import { Alumnos, User } from 'src/app/core/models';
 
 import { AlumnosService } from 'src/app/core/services/alumnos.service';
 import { Router } from '@angular/router';
 import { AgregarComponent } from './abm/agregar/agregar.component';
 import { EditarComponent } from './abm/editar/editar.component';
 import { EliminarComponent } from './abm/eliminar/eliminar.component';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-alumnos-tables',
   templateUrl: './alumnos-tables.component.html',
   styles: [],
 })
-export class AlumnosTablesComponent {
+export class AlumnosTablesComponent implements OnInit {
   dataSource = new MatTableDataSource();
+  displayedColumns: string[] = ['id', 'nombre', 'mail', 'action'];
+  userAuth: User | null = null;
+  public mostrarBotones: boolean = false;
 
   constructor(
     private dialogService: MatDialog,
     private alumnosService: AlumnosService,
-    private router:Router
+    private authService: AuthService,
+    private router: Router
   ) {
     this.actualizarLista();
   }
-
-  displayedColumns: string[] = ['id', 'nombre', 'mail', 'action'];
+  ngOnInit(): void {
+    this.authService.esAdmin().subscribe((esAdmin) => {
+      this.mostrarBotones = esAdmin;
+    });
+  }
 
   actualizarLista(): void {
     this.alumnosService.getAlumnos().subscribe((alumnos) => {
@@ -37,8 +42,6 @@ export class AlumnosTablesComponent {
   }
 
   editarAlumno(alumno: Alumnos): void {
-
-   
     const dialog = this.dialogService.open(EditarComponent, { data: alumno });
 
     dialog.afterClosed().subscribe(() => {
@@ -47,7 +50,6 @@ export class AlumnosTablesComponent {
   }
 
   eliminarAlumno(alumno: Alumnos): void {
-    
     const dialog = this.dialogService.open(EliminarComponent, { data: alumno });
     dialog.afterClosed().subscribe(() => {
       this.actualizarLista();
@@ -61,16 +63,15 @@ export class AlumnosTablesComponent {
     });
   }
 
-  verAlumno(id:number): void {
-  this
-   this.router.navigate(['dashboard','alumnos',id],{
-    queryParams:{
-      page: 1,
-      limit: 50
-    }
-   })
+  verAlumno(id: number): void {
+    this;
+    this.router.navigate(['dashboard', 'alumnos', id], {
+      queryParams: {
+        page: 1,
+        limit: 50,
+      },
+    });
   }
-
 
   applyFilter(event: Event) {
     const inputValue = (event.target as HTMLInputElement)?.value;

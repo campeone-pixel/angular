@@ -6,6 +6,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Cursos } from 'src/app/core/models/cursos.models';
 
 import { CursosService } from 'src/app/core/services/cursos.service';
 import { NotificationsService } from 'src/app/core/services/notifications.service';
@@ -24,6 +25,8 @@ export class AgregarComponent {
 
   fechaInicioControl = new FormControl('fecha inicio', [Validators.required]);
   fechaFinControl = new FormControl('fecha fin', [Validators.required]);
+  diasCursarControl = new FormControl('fecha fin', [Validators.required]);
+  horarioControl = new FormControl('fecha fin', [Validators.required]);
 
   constructor(
     public formBuilder: FormBuilder,
@@ -35,18 +38,23 @@ export class AgregarComponent {
       nombre: this.nombreControl,
       fecha_inicio: this.fechaInicioControl,
       fecha_fin: this.fechaFinControl,
+      diasCursar: this.diasCursarControl,
+      horario: this.horarioControl
     });
   }
 
   add(): void {
     if (this.registerForm.valid) {
-      const nuevoCurso = {
+      const nuevoCurso: Cursos = {
+    
         nombre: this.registerForm.value.nombre,
         fecha_inicio: this.registerForm.value.fecha_inicio,
         fecha_fin: this.registerForm.value.fecha_fin,
+        diasCursar: this.registerForm.value.diasCursar,
+        horario: this.registerForm.value.horario
       };
 
-      this.cursoService.addCurso(nuevoCurso);
+      this.cursoService.add(nuevoCurso);
 
       this.notification.mostrarMensaje('el usuario se creo correctamente');
       this.dialogRef.close();

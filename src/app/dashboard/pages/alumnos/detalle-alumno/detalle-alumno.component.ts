@@ -6,18 +6,21 @@ import { Alumnos } from '../../../../core/models/alumnos.model';
 @Component({
   selector: 'app-detalle-alumno',
   templateUrl: './detalle-alumno.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class DetalleAlumnoComponent {
+  detalleAlumno: Alumnos | undefined;
 
-detalleAlumno:Alumnos|undefined;
-
-constructor(private activatedRoute:ActivatedRoute,
-  private alumnosService: AlumnosService){
-  this.detalleAlumno = this.alumnosService.obtenerAlumnoPorID(parseInt(this.activatedRoute.snapshot.params['id']))
-  
-}
-
-
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private alumnosService: AlumnosService
+  ) {
+    this.alumnosService.obtenerAlumnoPorID(
+      parseInt(this.activatedRoute.snapshot.params['id'])
+    ).subscribe(
+      (alumno)=>{
+        this.detalleAlumno = alumno
+      }
+    );
+  }
 }
