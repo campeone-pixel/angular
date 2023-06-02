@@ -1,24 +1,18 @@
 <mat-drawer-container class="example-container" autosize>
   <mat-drawer #sidenav class="example-sidenav" mode="side">
-
-    <img
-      width="50"
-      height="50"
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTVgJF9HAqGLoGIBh9AR-by9m0zSY3zKiPwaxt_uXuJTA&s"
-    />
-
     <mat-nav-list>
-      <a
-        mat-list-item
-        [routerLink]="link.path"
-        *ngFor="let link of links"
-        >
-        
-        <mat-icon *ngIf="link.icon">{{link.icon}}</mat-icon>
+      <a mat-list-item [routerLink]="link.path" *ngFor="let link of links">
+        <mat-icon *ngIf="link.icon">{{ link.icon }}</mat-icon>
         {{ link.title }}</a
-        >
-        
-     
+      >
+      <a mat-list-item [routerLink]="'usuarios'" *ngIf="condicion">
+        <mat-icon>manage_accounts</mat-icon>
+        Usuarios
+      </a>
+      <a mat-list-item [routerLink]="'registro-cursos'" >
+        <mat-icon>app_registration</mat-icon>
+        Inscripciones
+      </a>
     </mat-nav-list>
   </mat-drawer>
 

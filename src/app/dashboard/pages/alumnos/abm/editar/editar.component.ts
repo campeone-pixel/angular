@@ -32,8 +32,6 @@ export class EditarComponent {
     Validators.email,
   ]);
 
-  mejorAlumnoControl = new FormControl(false);
-
   constructor(
     public formBuilder: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: Alumnos,
@@ -46,22 +44,16 @@ export class EditarComponent {
       nombre: this.data.nombre,
       apellido: this.data.apellido,
       mail: this.data.mail,
-      mejorAlumno: this.data.mejorAlumno,
-      eliminado: this.data.eliminado,
     });
   }
 
   editar() {
     if (this.registerForm.valid) {
- 
       const nuevoAlumno: Alumnos = {
-        id:this.registerForm.value.id,
-        nombre:this.registerForm.value.nombre,
-        apellido:this.registerForm.value.apellido ,
+        id: this.registerForm.value.id,
+        nombre: this.registerForm.value.nombre,
+        apellido: this.registerForm.value.apellido,
         mail: this.registerForm.value.mail,
-        mejorAlumno: this.registerForm.value.mejorAlumno,
-        eliminado:false
-
       };
       this.alumnosService.update(nuevoAlumno);
 

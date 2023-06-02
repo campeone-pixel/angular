@@ -13,6 +13,7 @@ import links from './nav-items';
 })
 export class SidebarComponent implements OnInit, OnDestroy {
   private destroyed$ = new Subject<void>();
+  condicion:boolean= false;
   showFiller = false;
 
   links = links;
@@ -24,6 +25,9 @@ export class SidebarComponent implements OnInit, OnDestroy {
     private sidenavTogglerService: SidenavTogglerService,
     private authService: AuthService
   ) {
+    this.authService.esAdmin().subscribe((b )=>{
+      this.condicion= b
+    })
     this.authService
       .getUser()
       .pipe(takeUntil(this.destroyed$))

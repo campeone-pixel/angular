@@ -4,6 +4,4 @@ export interface Alumnos {
   nombre: string;
   apellido: string;
   mail: string;
-  mejorAlumno: boolean;
-  eliminado: boolean;
 }

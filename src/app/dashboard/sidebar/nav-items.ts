@@ -5,16 +5,11 @@ interface NavItem {
 }
 
 const links: NavItem[] = [
-  { path: 'alumnos', title: 'Estudiantes', icon: 'person' },
+  { path: 'alumnos', title: 'Estudiantes', icon: 'school' },
   {
     path: 'cursos',
     title: 'Cursos',
-    icon: 'school',
-  },
-  {
-    path: 'usuarios',
-    title: 'Usuarios',
-    icon: 'manage_accounts',
+    icon: 'menu_book',
   },
 ];
 

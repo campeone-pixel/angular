@@ -31,8 +31,6 @@ export class AgregarComponent {
     Validators.email,
   ]);
 
-  mejorAlumnoControl = new FormControl(false);
-
   constructor(
     public formBuilder: FormBuilder,
     public dialogRef: MatDialogRef<AgregarComponent>,
@@ -43,19 +41,15 @@ export class AgregarComponent {
       nombre: this.nombreControl,
       apellido: this.apellidoControl,
       mail: this.mailControl,
-      mejorAlumno: this.mejorAlumnoControl,
     });
   }
 
   add(): void {
     if (this.registerForm.valid) {
-     
       const nuevoAlumno: Alumnos = {
-        nombre:this.registerForm.value.nombre,
-        apellido:this.registerForm.value.apellido ,
+        nombre: this.registerForm.value.nombre,
+        apellido: this.registerForm.value.apellido,
         mail: this.registerForm.value.mail,
-        mejorAlumno: this.registerForm.value.mejorAlumno,
-        eliminado: this.registerForm.value.eliminado,
       };
       this.alumnosService.add(nuevoAlumno);
 

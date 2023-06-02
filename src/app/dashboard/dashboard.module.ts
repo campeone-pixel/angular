@@ -18,7 +18,6 @@ import { ContenidoComponent } from './contenido/contenido.component';
 
 import { MatCardModule } from '@angular/material/card';
 
-import { MatDialogModule } from '@angular/material/dialog';
 import { AdminGuard } from '../auth/guards/admin.guard';
 
 const routes: Routes = [
@@ -29,7 +28,6 @@ const routes: Routes = [
         (m) => m.AlumnosTablesModule
       ),
   },
-
   {
     path: 'cursos',
     canActivate: [],
@@ -46,6 +44,14 @@ const routes: Routes = [
         return m.UsuariosModule;
       }),
   },
+  {
+    path: 'registro-cursos',
+    canActivate: [],
+    loadChildren: () =>
+      import('./pages/registro-cursos/registro-cursos.module').then((m) => {
+        return m.RegistroCursosModule;
+      }),
+  },
 ];
 
 @NgModule({
@@ -58,7 +64,6 @@ const routes: Routes = [
 
   imports: [
     CommonModule,
-
     MatToolbarModule,
     MatIconModule,
     ReactiveFormsModule,
@@ -66,7 +71,6 @@ const routes: Routes = [
     MatSidenavModule,
     MatTableModule,
     MatCardModule,
-
     MatListModule,
     MatCardModule,
     RouterModule.forChild(routes),

@@ -9,7 +9,7 @@
     />
     <mat-error *ngFor="let error of nombreControl.errors | keyvalue">
       {{ error | controlErrorsMessage }}
-     </mat-error>
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field class="mb-3 w-100">
@@ -24,7 +24,7 @@
     />
     <mat-error *ngFor="let error of apellidoControl.errors | keyvalue">
       {{ error | controlErrorsMessage }}
-     </mat-error>
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field class="mb-3 w-100">
@@ -40,10 +40,8 @@
     />
     <mat-error *ngFor="let error of mailControl.errors | keyvalue">
       {{ error | controlErrorsMessage }}
-     </mat-error>
+    </mat-error>
   </mat-form-field>
-
-  <mat-checkbox formControlName="mejorAlumno">Mejor Alumno</mat-checkbox>
 
   <div mat-dialog-action class="row w-100 d-flex gap-4">
     <button mat-button (click)="editar()">Submit</button>

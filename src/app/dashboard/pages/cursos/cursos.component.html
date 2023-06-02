@@ -62,7 +62,7 @@
       </table>
     </div>
     <div class="container-fluid m-3 col-12">
-      <button mat-button (click)="agregarCurso()">Agregar curso</button>
+      <button mat-button *ngIf="mostrarBotones" (click)="agregarCurso()">Agregar curso</button>
     </div>
   </div>
 
