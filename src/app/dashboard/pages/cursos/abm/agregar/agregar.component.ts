@@ -6,7 +6,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Cursos } from 'src/app/core/models/cursos.models';
+import { Cursos } from 'src/app/core/models/cursos.model';
 
 import { CursosService } from 'src/app/core/services/cursos.service';
 import { NotificationsService } from 'src/app/core/services/notifications.service';
@@ -45,13 +45,12 @@ export class AgregarComponent {
 
   add(): void {
     if (this.registerForm.valid) {
-      const nuevoCurso: Cursos = {
+      const nuevoCurso = {
     
         nombre: this.registerForm.value.nombre,
         fecha_inicio: this.registerForm.value.fecha_inicio,
         fecha_fin: this.registerForm.value.fecha_fin,
-        diasCursar: this.registerForm.value.diasCursar,
-        horario: this.registerForm.value.horario
+
       };
 
       this.cursoService.add(nuevoCurso);

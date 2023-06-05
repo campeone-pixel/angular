@@ -1,6 +1,5 @@
 export interface Alumnos {
-  id?: number;
-  cursosID?: number;
+  id: number;
   nombre: string;
   apellido: string;
   mail: string;

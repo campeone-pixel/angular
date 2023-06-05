@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Alumnos } from 'src/app/core/models/alumnos.model';
-import { Cursos } from 'src/app/core/models/cursos.models';
+import { Cursos } from 'src/app/core/models/cursos.model';
 import { CursosService } from 'src/app/core/services/cursos.service';
 import { NotificationsService } from 'src/app/core/services/notifications.service';
 import { formatDate } from '@angular/common';
@@ -48,8 +48,7 @@ export class EditarComponent implements OnInit {
       nombre: this.data.nombre,
       fecha_inicio: this.data.fecha_inicio,
       fecha_fin: this.data.fecha_fin,
-      diasCursar: this.data.diasCursar,
-      horario: this.data.horario
+ 
     })
     }
 
@@ -61,8 +60,7 @@ export class EditarComponent implements OnInit {
         nombre: this.registerForm.value.nombre,
         fecha_inicio: this.registerForm.value.fecha_inicio,
         fecha_fin: this.registerForm.value.fecha_fin,
-        diasCursar: this.registerForm.value.diasCursar,
-        horario: this.registerForm.value.horario
+    
       };
       
       this.cursoService.update(editado );

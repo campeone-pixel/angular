@@ -8,7 +8,7 @@ import { EliminarComponent } from './abm/eliminar/eliminar.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
-import { Cursos } from 'src/app/core/models/cursos.models';
+import { Cursos } from 'src/app/core/models/cursos.model';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { User } from 'src/app/core/models';

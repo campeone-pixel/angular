@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, find, map, Observable, take } from 'rxjs';
-import {  Cursos } from '../models/cursos.models';
+import {  Cursos } from '../models/cursos.model';
 import { enviroments } from 'src/enviroments/enviroments';
 import { HttpClient } from '@angular/common/http';
 

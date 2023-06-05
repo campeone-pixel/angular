@@ -40,7 +40,7 @@
   "cursos": [
     {
       "id": 1,
-      "nombre": "Angulargfhfhg",
+      "nombre": "Angular",
       "fecha_inicio": "2023-05-06T00:13:53.322Z",
       "fecha_fin": "2023-05-06T00:13:53.322Z"
     },
@@ -61,33 +61,55 @@
   ],
   "alumnos": [
     {
-      "nombre": "nombre",
-      "apellido": "apellido",
+      "nombre": "noelia",
+      "apellido": "perez",
       "mail": "mail@mail.com",
       "mejorAlumno": false,
       "id": 1
     },
     {
-      "nombre": "nombre",
-      "apellido": "apellido",
+      "nombre": "matias",
+      "apellido": "poses",
       "mail": "mail@mail.com",
       "mejorAlumno": false,
       "id": 2
     },
     {
-      "nombre": "nombre",
-      "apellido": "apellido",
+      "nombre": "juan",
+      "apellido": "calvo",
       "mail": "mail@mail.com",
       "mejorAlumno": false,
       "id": 3
     },
     {
       "id": 4,
-      "nombre": "nombreasdfgsdfsdf",
-      "apellido": "apellido",
+      "nombre": "martin",
+      "apellido": "apido",
       "mail": "mail@mail.com",
       "mejorAlumno": false,
       "eliminado": false
+    }
+  ],
+  "inscriptions": [
+    {
+      "id": 2,
+      "alumnosId": 1,
+      "cursosId": 2
+    },
+    {
+      "alumnosId": 3,
+      "cursosId": 1,
+      "id": 3
+    },
+    {
+      "alumnosId": 3,
+      "cursosId": 1,
+      "id": 4
+    },
+    {
+      "alumnosId": 1,
+      "cursosId": 2,
+      "id": 5
     }
   ]
 }

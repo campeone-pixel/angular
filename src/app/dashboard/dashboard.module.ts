@@ -19,6 +19,7 @@ import { ContenidoComponent } from './contenido/contenido.component';
 import { MatCardModule } from '@angular/material/card';
 
 import { AdminGuard } from '../auth/guards/admin.guard';
+import { InscripcionesModule } from './pages/inscripciones/inscripciones.module';
 
 const routes: Routes = [
   {
@@ -45,11 +46,11 @@ const routes: Routes = [
       }),
   },
   {
-    path: 'registro-cursos',
+    path: 'inscriptions',
     canActivate: [],
     loadChildren: () =>
-      import('./pages/registro-cursos/registro-cursos.module').then((m) => {
-        return m.RegistroCursosModule;
+      import('./pages/inscripciones/inscripciones.module').then((m) => {
+        return m.InscripcionesModule;
       }),
   },
 ];

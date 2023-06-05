@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AlumnosService } from '../../../../core/services/alumnos.service';
 
-import { Cursos } from 'src/app/core/models/cursos.models';
+import { Cursos } from 'src/app/core/models/cursos.model';
 import { CursosService } from 'src/app/core/services/cursos.service';
 
 @Component({

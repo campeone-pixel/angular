@@ -46,7 +46,7 @@ export class AgregarComponent {
 
   add(): void {
     if (this.registerForm.valid) {
-      const nuevoAlumno: Alumnos = {
+      const nuevoAlumno = {
         nombre: this.registerForm.value.nombre,
         apellido: this.registerForm.value.apellido,
         mail: this.registerForm.value.mail,
